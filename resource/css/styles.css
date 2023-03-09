@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Smack Boom';
+    src: url('../fonts/smack_boom/Smack\ Boom.ttf');
+}
+
+.cardShadow{
+    border-radius: 0.5em;
+}
+
+
+.inputBorder{
+    border-color: black;
+}
+
+.inputBorder:hover{
+    border-color: #7D2972;
+}
