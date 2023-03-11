@@ -46,3 +46,28 @@ ul li:hover{
     margin: 20px auto 0 auto;
 }
 
+.textoMorado{
+    color: #7D2972;
+}
+
+.cartaTitulo{
+    background-color: #7D2972;
+    color: white;
+}
+
+.cartaTitulo:hover{
+    background-color: white;
+    border-color: #7D2972;
+    color: #7D2972;
+    
+}
+
+.btnMorado{
+    background-color: #7D2972;
+}
+
+.btnMorado:hover{
+    background-color: white;
+    border-color: #7D2972;
+    color: #7D2972;
+}

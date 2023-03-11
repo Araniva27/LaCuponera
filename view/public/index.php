@@ -19,7 +19,7 @@
            </div>
          </div>
          <div class="linea"></div>
-      </div>
+      </div>     
       
       <div class="container-fluid">
          <div class="row text-center">
@@ -33,7 +33,7 @@
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>
                      <div class = "d-flex justify-content-center">
-                        <a href="#" class="btn btn-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
+                        <a href="offersCompany.php" class="btn btn-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
                      </div>
                   </div>
                </div>
@@ -45,7 +45,7 @@
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>
                      <div class = "d-flex justify-content-center">
-                        <a href="#" class="btn btn-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
+                        <a href="offersCompany.php" class="btn btn-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
                      </div>
                   </div>
                </div>
@@ -57,7 +57,7 @@
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>
                      <div class = "d-flex justify-content-center">
-                        <a href="#" class="btn btn-bd-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
+                        <a href="offersCompany.php" class="btn btn-bd-primary" style="background-color: #7D2972; color : white">Ver promociones</a>
                      </div>
                   </div>
                </div>

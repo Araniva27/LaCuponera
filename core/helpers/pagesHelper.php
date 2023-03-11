@@ -37,7 +37,7 @@ class PageHelper{
 										<a class="nav-link listElement" href="#">Historial de compras</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link listElement" href="#">Registraste</a>
+										<a class="nav-link listElement" href="newClient.php">Registraste</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link listElement" href="login.php">Inicio de sesión</a>
@@ -59,6 +59,10 @@ class PageHelper{
 
 	 public static function Footer(){
 		print '
+			<script src="../../resource/js/jquery-3.6.4.min.js"></script>
+			<script src="../../resource/js/popper.min.js"></script>
+			<script src="../../resource/js/bootstrap.min.js"></script>
+			<script src="../../core/controllers/offersCompany.js"></script>
 			<footer class="bg-dark text-center text-white" style = "margin-top: 35px;">  
 				<div class="text-center p-3" style="background-color: #7D2972">
 					© 2023 Copyright         
