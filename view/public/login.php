@@ -1,8 +1,8 @@
 <?php
 	require_once ('../../core/helpers/pagesHelper.php');
-	PageHelper::header('Login');
+	PageHelper::Header('Login');
 ?>
-<body style="background-color: #7D2972">
+<body style="background-color: #7D2972; height: 100%; width: 100%;">
    <main>
 		<div class="container" style = "height: 100%; width:100%">
 			<div class="row justify-content-center">
@@ -17,8 +17,8 @@
 								</div>
 								<div class="row">
 									<div class="mb-3">
-										<label for="usuario" class="form-label" style = "font-size: 19px">Usuario</label>
-										<input type="text" class="form-control inputBorder" id="usuario" name = "usuario" placeholder="Ingrese usuario">
+										<label for="correo" class="form-label" style = "font-size: 19px">Correo</label>
+										<input type="email" class="form-control inputBorder" id="correo" name = "correo" placeholder="Ingrese correo">
 									</div>
 								</div>
 								<div class="row">
@@ -29,7 +29,7 @@
 								</div>									
 								<div class="container" style = "margin-top: 20px">
 									<div class="row">									
-										<button type="button" class="btn btn-primary">Ingresar</button>
+										<a href = "index.php" type="button" class="btn btn-primary">Ingresar</a>
 									</div>	
 								</div>	
 								<div class="container" style = "margin-top:10px">
