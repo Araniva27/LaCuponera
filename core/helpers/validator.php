@@ -48,6 +48,21 @@ class Validator
 			return false;
 		}
     }
+
+    /**
+     * Método para validar el código de la empresa (3 letras y 3 números)
+     * @return boolean true si se válido correctamente y false si no se válido correctamente
+     * 
+     * @param $value valor que se validará
+     */
+    public function validateCompanieCode($value)
+    {
+        if(preg_match('/^[A-Z]{3}[0-9]{3}$/', $value)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>
