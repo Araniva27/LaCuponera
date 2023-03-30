@@ -1,16 +1,12 @@
 <?php
-/**
- * Clase donde se realizan las validaciones de los diversos campos del lado del servidor
- */
-class Validator
-{
+
     /**
      * Método para validar correos electrónicos
      * @return boolean true en caso que se haya validado correctamente y false en caso de que no se haya validado
      * 
      * @param $value define que valor se validará
      */
-    public function validateEmail($value)
+    function validateEmail($value)
     {
         if(filter_var($value,FILTER_VALIDATE_EMAIL)){
             return true;
@@ -25,7 +21,7 @@ class Validator
      * 
      * @param $value define que valor se validará
      */
-    public function validateDUI($value)
+    function validateDUI($value)
     {
         if(preg_match('/^[0-9]{8}-[0-9]{1}$/',$value)){
             return true;
@@ -40,7 +36,7 @@ class Validator
      * 
      * @param $value valor que se validará
      */
-    public function validatePhoneNumber($value)
+    function validatePhoneNumber($value)
     {
         if(preg_match('/^([2,6,7][0-9]{3})(-)([0-9]{4})$/',$value)){
 			return true;
@@ -55,7 +51,7 @@ class Validator
      * 
      * @param $value valor que se validará
      */
-    public function validateCompanieCode($value)
+    function validateCompanieCode($value)
     {
         if(preg_match('/^[A-Z]{3}[0-9]{3}$/', $value)){
             return true;
@@ -63,6 +59,5 @@ class Validator
             return false;
         }
     }
-}
 
 ?>

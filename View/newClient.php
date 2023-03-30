@@ -1,7 +1,14 @@
-<?php
-    require_once('../../core/helpers/pagesHelper.php');
-    PageHelper::header('Registro de clientes');
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php 
+      include 'cabecera.php'
+    ?>
+    <title>Registro | La Cuponera</title>
+</head>
 <header style="height: 100%; width: 100%; color:white; ">
     <h4 class = "text-start" style = "font-family: 'Smack Boom'; font-size:35px; margin-left:2%; margin-top:2%; ">La Cuponera</h4>									
 </header>
@@ -12,7 +19,7 @@
                 <div class="col-md-6 col-sm-3">
                     <div class="card cardShadow" style = "margin-top: 15%; height: 525px; width:850px; margin-left:-15%">
                         <div class="card-body">
-                            <form id="formNewClient" name="formNewClient">
+                            <form id="formNewClient" name="formNewClient" action = "/LaCuponera/client/add" method="POST">
                                 <div class="row">									
 									<h4 class = "text-center"><b>¡Regístrate!</b></h4>
                                     <hr>
@@ -75,7 +82,7 @@
                                 </div>
                                 <div class="container" style = "margin-top: 20px">
 									<div class="row">									
-										<button type="button" class="btn btn-primary">Registrarse</button>
+										<button type="submit" class="btn btn-primary" name="registrar">Registrarse</button>
 									</div>	
 								</div>
                             </form>
@@ -86,5 +93,4 @@
         </div>
     </main>   
 </body>
-<script src="../../resource/js/bootstrap.min.js"></script>
 </html>

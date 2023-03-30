@@ -1,7 +1,26 @@
 <?php
-	require_once ('../../core/helpers/pagesHelper.php');
-	PageHelper::Header('Login');
+	if(isset($_SESSION['success_message'])){	
 ?>
+	<script>
+		swal("¡Registro exitoso!", "Ingresa con tus datoss", "success");
+	</script>
+<?php
+	unset($_SESSION['success_message']);
+	} 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php 
+      include 'cabecera.php'
+    ?>
+    <title>Login | La Cuponera</title>
+</head>
 <body style="background-color: #7D2972; height: 100%; width: 100%;">
    <main>
 		<div class="container" style = "height: 100%; width:100%">
@@ -47,5 +66,5 @@
 		</div>    
    </main>
 </body>
-<script src="../../resource/js/bootstrap.min.js"></script>
+<script src="../../../resource/js/bootstrap.min.js"></script>
 </html>
