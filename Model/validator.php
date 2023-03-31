@@ -60,4 +60,23 @@
         }
     }
 
+    /**
+     * Método para válidar la contraseña
+     * Al menos 1 mayúscula
+     * Al menos 1 minúscula
+     * Al menos 1 numero
+     * Al menos un caracter especial
+     * Entre 8-16 caracteres en total
+     * @return boolean true si se validó correctamente y false en caso contrario
+     * 
+     * @param $value valor o cadena que se validará
+     */
+    function validatePassword($value)
+    {
+        if(preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}$/', $value)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>
