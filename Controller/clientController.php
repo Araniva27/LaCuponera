@@ -33,6 +33,8 @@ class ClientController extends Controller{
             $cliente['direccion'] = $direccion;
             $cliente['dui'] = $dui;
             $cliente['telefono'] = $telefono; 
+            $cliente['contra'] = $contra;
+             
             
             if(empty($nombres)){
                 array_push($errores, 'Debe de ingresar un nombre');
@@ -64,11 +66,17 @@ class ClientController extends Controller{
             }else if(!validatePhoneNumber($telefono)){
                 array_push($errores, 'Formato de teléfono incorrecto');
             }
+            
+            if(empty($contra) || empty($contraRep)){
+                array_push($errores, 'Debe de ingresar contraseña y su verificación');
+            }else if($contra != $contraRep){
+                array_push($errores, 'Las contraseñas no coinciden');
+            }
 
             if(count($errores) == 0){
                 if($this->model->insertarCliente($cliente) >0){
                     $_SESSION['success_message'] = "Cliente registrado correctamente";                    
-                    header('location: /LaCuponera/View/Login.php');
+                    header('location: /LaCuponera/View/validateCode.php');
                 }else{
                     array_push($errores, "Ya existe el cliente que desea registrar");
                     $viewBag['errores'] = $errores;

@@ -1,14 +1,3 @@
-<?php
-	if(isset($_SESSION['success_message'])){	
-?>
-	<script>
-		swal("¡Registro exitoso!", "Ingresa con tus datoss", "success");
-	</script>
-<?php
-	unset($_SESSION['success_message']);
-	} 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +10,19 @@
     ?>
     <title>Login | La Cuponera</title>
 </head>
+
 <body style="background-color: #7D2972; height: 100%; width: 100%;">
+<?php
+	if(isset($_SESSION['success_message'])){	
+		
+?>
+	<script>
+		swal("¡Registro exitoso!", "Ingresa con tus datoss", "success");
+	</script>
+<?php
+	unset($_SESSION['success_message']);
+	} 
+?>
    <main>
 		<div class="container" style = "height: 100%; width:100%">
 			<div class="row justify-content-center">
@@ -66,5 +67,4 @@
 		</div>    
    </main>
 </body>
-<script src="../../../resource/js/bootstrap.min.js"></script>
 </html>
