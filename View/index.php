@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php 
-      include 'cabecera.php'
+      include 'cabecera.php';            
     ?>
     <title>Home | La Cuponera</title>
 </head>
 <body style="background-color: beige">
    <?php
-      include 'menu.php';
+      include 'menu.php';      
    ?>
    <main>
 		<div class="container-fluid d-none d-sm-block" style="padding: 0">         
-         <img src="assets/img/imgPrincipal4.jpg" class="img-fluid imgPrincipal" alt="Imagen principal">
+         <img src="/LaCuponera/View/assets/img/imgPrincipal4.jpg" class="img-fluid imgPrincipal" alt="Imagen principal">
       </div>
       <div class = "container-fluid" style="padding:10px">
          <div class="row">
@@ -29,14 +29,14 @@
          <div class="linea"></div>
       </div>     
       
-      <div class="container-fluid">
+      <div class="container-fluid">        
          <div class="row text-center">
             <h3 style = "color:#7D2972">Conoce las ofertas de las empresas asociadas</h3>
          </div>   
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                <div class="card">
-                  <img src="assets/img/polloCampero.png" class="card-img-top" alt="...">
+                  <img src="/LaCuponera/View/assets/img/polloCampero.png" class="card-img-top" alt="...">
                   <div class="card-body">
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                <div class="card">
-                  <img src="assets/img/polloCampero.png" class="card-img-top" alt="...">
+                  <img src="/LaCuponera/View/assets/img/polloCampero.png" class="card-img-top" alt="...">
                   <div class="card-body">
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                <div class="card">
-                  <img src="assets/img/polloCampero.png" class="card-img-top" alt="...">
+                  <img src="/LaCuponera/View/assets/img/polloCampero.png" class="card-img-top" alt="...">
                   <div class="card-body">
                      <h5 class="card-title">Pollo Campero</h5>
                      <p class="card-text">Conoce las promociones de Pollo Campero</p>

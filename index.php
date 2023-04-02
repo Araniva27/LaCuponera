@@ -2,6 +2,7 @@
 
 //Incluyendo controladores
 include_once 'Controller/clientController.php';
+include_once 'Controller/companiesController.php';
 define('BASEPATH',true);
 session_start();
 $url = $_SERVER['REQUEST_URI'];

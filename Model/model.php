@@ -35,7 +35,7 @@ class Model{
     protected function getQuery($query, $params=array()){
         try{
             $this->openConnection();
-            $st = $this->conn->prepare();
+            $st = $this->conn->prepare($query);
             $st->execute($params);
             $rows = $st->fetchAll();
             $this->closeConnection();

@@ -29,7 +29,7 @@
 				<div class="col-md-6">					
 					<div class="card cardShadow" style = "margin-top: 30%; height: 400px; width:370px; margin-left: 17%;">
 						<div class="card-body">
-							<form id = "formLogin" name = "formLogin">
+							<form id = "formLogin" name = "formLogin" action = "/LaCuponera/">
 								<div class="row">									
 									<h4 class = "text-center" style = "font-family: 'Smack Boom'; font-size:30px">La Cuponera</h4>									
 									<hr>

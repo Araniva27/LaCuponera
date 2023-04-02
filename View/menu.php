@@ -17,10 +17,10 @@
                         <a class="nav-link listElement" href="#">Historial de compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link listElement" href="newClient.php">Registraste</a>
+                        <a class="nav-link listElement" href="/LaCuponera/View/newClient.php">Registraste</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link listElement" href="login.php">Inicio de sesión</a>
+                        <a class="nav-link listElement" href="/LaCuponera/View/login.php">Inicio de sesión</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link listElement" href="#">Cerrar sesión</a>

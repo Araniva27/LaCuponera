@@ -75,7 +75,8 @@ class ClientController extends Controller{
 
             if(count($errores) == 0){
                 if($this->model->insertarCliente($cliente) >0){
-                    $_SESSION['success_message'] = "Cliente registrado correctamente";                    
+                    $_SESSION['success_message'] = "Cliente registrad correctamente";                    
+                    //Aqui se tendria que generar el token y enviarlo por correo 
                     header('location: /LaCuponera/View/validateCode.php');
                 }else{
                     array_push($errores, "Ya existe el cliente que desea registrar");
