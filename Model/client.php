@@ -7,7 +7,7 @@ require_once 'model.php';
 class Client extends Model
 {
     public function get($id=""){
-        if($id=""){
+        if($id==""){
             $query = "SELECT * FROM cliente";
             return $this->getQuery($query);
         }else{

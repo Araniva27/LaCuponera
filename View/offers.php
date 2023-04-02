@@ -35,12 +35,29 @@
             </div>
         </div>
         <div class="container-fluid" style="margin-top: 20px;">
-            <div class="card">
-                <img src="assets/img/polloCampero.png">
-                <div class="card-body">
-                    <h1 class="card-title">Pollo campero</h1>
-                </div>
-            </div>
+            <?php
+                foreach($ofertas as $oferta){
+                    echo "
+                        <div class='card'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>".$oferta['Empresa']."</h3>
+                            <ul>
+                                <li style='font-size: 23px'><b>Título:</b> ".$oferta['titulo']."</li>
+                                <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
+                                <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
+                            </ul>
+                            <div class='row d-flex  justify-content-center' >
+                                <a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; '>Seleccionar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ";
+                }
+            
+            
+            ?>
+                
         </div>
     </main>
 </body>

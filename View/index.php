@@ -36,9 +36,9 @@
             <h3 style="color:#7D2972">Conoce las ofertas...</h3>
          </div>
          <div class="row">
-            <form action="#" method="POST">
+            <form action="/LaCuponera/offers/" method="POST">
                <div class="d-flex justify-content-center">
-                  <a type="submit" class="btn btn-primary text-center" style="background-color: #7D2972; color : white; height: 50px; width:200px; font-size:20px; ">Ver promociones</a>
+                  <button type="submit" class="btn btn-primary text-center" style="background-color: #7D2972; color : white; height: 50px; width:200px; font-size:20px; ">Ver promociones</button>
                </div>
             </form>
          </div>
