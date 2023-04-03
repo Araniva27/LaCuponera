@@ -6,18 +6,29 @@
 require_once 'model.php';
 class Client extends Model
 {
-    public function get($id=""){
-        if($id==""){
+    public function get($id="")
+    {
+        if($id=="")
+        {
             $query = "SELECT * FROM cliente";
             return $this->getQuery($query);
-        }else{
+        }
+        else
+        {
             $query = "SELECT * FROM cliente WHERE idCliente = :idCliente";
             return $this->getQuery($query, ['idCliente'=>$id]);
         }
     }
 
-    public function insertarCliente($cliente=array()){
+    public function insertarCliente($cliente=array())
+    {
         $query = "INSERT INTO cliente VALUES (NULL, :nombres, :apellidos,:correo, :direccion, :dui, :telefono)";
         return $this->setQuery($query,$cliente);
+    }
+
+    public function insertarUsuario($usuario=array())
+    {
+        $query = "INSERT INTO usuario VALUES (:dui, :usuario, :contra,1 ,0)";
+        return $this->setQuery($query,$usuario);
     }
 }

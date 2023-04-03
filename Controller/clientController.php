@@ -3,6 +3,7 @@
 require_once 'Controller.php';
 require_once './Model/client.php';
 require_once './Model/validator.php';
+require_once './Model/correo.php';
 
 class ClientController extends Controller{
     
@@ -35,7 +36,9 @@ class ClientController extends Controller{
             $cliente['dui'] = $dui;
             $cliente['telefono'] = $telefono; 
             $usuario['contra'] = $contra;
-             
+            $usuario['dui'] = $dui;
+            $usuario['usuario'] = $correo;
+            
             
             if(empty($nombres)){
                 array_push($errores, 'Debe de ingresar un nombre');
@@ -74,18 +77,36 @@ class ClientController extends Controller{
                 array_push($errores, 'Las contraseñas no coinciden');
             }
 
-            if(count($errores) == 0){
-                if($this->model->insertarCliente($cliente) >0){
-                    $_SESSION['success_message'] = "Cliente registrad correctamente";                    
+            if(count($errores) == 0)
+            {
+                if($this->model->insertarCliente($cliente) >0)
+                {
+                    $_SESSION['success_message'] = "Cliente registrado correctamente";                    
                     //Aqui se tendria que generar el token y enviarlo por correo 
+                    //Usuario registrado
+                    if($this->model->insertarUsuario($usuario) >0)
+                    {
+                        //enviar correo
+                        $correoobj = new Correo();
+                        if($correoobj->enviarCorreo($usuario) >0)
+                        {
+                            //enviar correo
+                            //header('location: /LaCuponera/View/validateCode.php');
+                        }
                     header('location: /LaCuponera/View/validateCode.php');
-                }else{
+                    
+                    }
+                }
+                else
+                {
                     array_push($errores, "Ya existe el cliente que desea registrar");
                     $viewBag['errores'] = $errores;
                     $viewBag['cliente'] = $cliente;
                     $this->render("newClient.php", $viewBag);
                 }
-            }else{
+            }
+            else
+            {
                 $viewBag['errores'] = $errores;
                 $viewBag['cliente'] = $cliente;
                 $this->render("newClient.php", $viewBag);

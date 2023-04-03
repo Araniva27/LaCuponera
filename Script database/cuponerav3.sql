@@ -9,15 +9,17 @@ create table usuario
   nivel varchar(10) not null,
   estado int not null
 );
+select * from usuario;
 
 create table cliente
 (
   idCliente int auto_increment primary key,
   nombres varchar(40) not null,
   apellidos varchar(40) not null,
-  correo varchar(50) not null unique
+  correo varchar(50) not null unique,
   direccion varchar(100) not null,
-  dui varchar(10) not null unique
+  dui varchar(10) not null unique,
+  telefono varchar(9) not null unique
 );
 
 create table rubro
@@ -122,4 +124,4 @@ create table token
   correo varchar(100) not null
 );
 
-
+select * from token;

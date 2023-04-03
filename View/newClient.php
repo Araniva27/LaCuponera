@@ -29,9 +29,9 @@
                             <div class='card-body'>
                                 <ul>
                 ";
-                           foreach($errores as $error){
+                        foreach($errores as $error){
                                 echo "<li>".$error."</li>";
-                           }
+                        }
                 echo "           
                                 </ul>
                             </div>
