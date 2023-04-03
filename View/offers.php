@@ -24,39 +24,52 @@
                 <form method="POST" action="#">
                     <h5 style="color: #7D2972; font-weight:bold;">Buscador</h5>
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-8" style="width: 1300px">
                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ingrese empresa a buscar...">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" style="padding:0; width: 160px">
                             <a type="submit" class="btn btn-primary text-center" style="background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; ">Buscar</a>
+                        </div>
+                        <div class="col-2" style="padding:0">
+                            <a type="submit" class="btn btn-secondary text-center" style="color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; ">Mostrar todo</a>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
+        </div>                    
+                    
         <div class="container-fluid" style="margin-top: 20px;">
-            <?php
-                foreach($ofertas as $oferta){
-                    echo "
-                        <div class='card'>
-                        <div class='card-body'>
-                            <h3 class='card-title'>".$oferta['Empresa']."</h3>
-                            <ul>
-                                <li style='font-size: 23px'><b>Título:</b> ".$oferta['titulo']."</li>
-                                <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
-                                <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
-                            </ul>
-                            <div class='row d-flex  justify-content-center' >
-                                <a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; '>Seleccionar</a>
+            <div class="row">
+                <?php
+                    foreach($ofertas as $oferta){
+                        echo "
+                        <div class='col-lg-6' style = 'margin-top:15px'>
+                            <div class='card'>                        
+                                <div class='card-body'>                            
+                                    <div class='row'>
+                                        <div class='col-4'>
+                                            <img src='/LaCuponera/View/assets/img/".$oferta['Imagen']."' class='card-img-top' alt='...' width='200px' height='200px'>
+                                        </div>
+                                        <div class='col-8'>
+                                            <h3 class='card-title'>".$oferta['Empresa']."</h3>
+                                            <ul>
+                                                <li style='font-size: 23px'><b>Título de la oferta:</b> ".$oferta['titulo']."</li>
+                                                <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
+                                                <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
+                                            </ul>                                       
+                                            <a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; '>Seleccionar</a>                                        
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    ";
-                }
-            
-            
-            ?>
+                        
+                        ";
+                    }
+                
+                
+                ?>
+            </div>
                 
         </div>
     </main>
