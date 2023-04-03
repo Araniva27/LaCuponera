@@ -11,7 +11,7 @@ abstract class Controller{
             require($file);
             $content = ob_get_contents();
             ob_end_clean();            
-            echo $content;            
+            echo $content;                        
         }else{
             echo "No existe esta vista";
         }

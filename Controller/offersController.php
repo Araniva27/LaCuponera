@@ -19,6 +19,16 @@ class OffersController extends Controller{
         $viewBag['ofertas'] = $ofertas;
         $this->render("offers.php", $viewBag);
     }
+
+    public function buscarEmpresa(){     
+        if(isset($_POST['buscar'])){
+            extract($_POST);           
+            $datos = $this->model->get($nombre);
+            $viewBag['ofertas'] = $datos;
+            $this->render("offers.php", $viewBag); 
+        }                       
+                   
+    }
 }
 
 
