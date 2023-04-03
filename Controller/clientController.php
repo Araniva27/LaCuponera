@@ -26,6 +26,7 @@ class ClientController extends Controller{
             extract($_POST);
             $errores = array();
             $cliente = array();
+            $usuario = array();
             $viewBag = array();
             $cliente['nombres'] = $nombres;
             $cliente['apellidos'] = $apellidos;
@@ -33,7 +34,7 @@ class ClientController extends Controller{
             $cliente['direccion'] = $direccion;
             $cliente['dui'] = $dui;
             $cliente['telefono'] = $telefono; 
-            $cliente['contra'] = $contra;
+            $usuario['contra'] = $contra;
              
             
             if(empty($nombres)){
