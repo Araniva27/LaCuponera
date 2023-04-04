@@ -10,7 +10,6 @@ class Model{
     private $pass="";
     private $db="cuponera";
     private $conn;
-          
     /**
      * Método para conectarse a la base de datos
      */

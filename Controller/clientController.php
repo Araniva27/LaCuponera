@@ -88,13 +88,8 @@ class ClientController extends Controller{
                     {
                         //enviar correo
                         $correoobj = new Correo();
-                        if($correoobj->enviarCorreo($usuario) >0)
-                        {
-                            //enviar correo
-                            //header('location: /LaCuponera/View/validateCode.php');
-                        }
-                    header('location: /LaCuponera/View/validateCode.php');
-                    
+                        $correoobj->enviarCorreo($usuario);
+                        header('location: /LaCuponera/View/validateCode.php');
                     }
                 }
                 else
