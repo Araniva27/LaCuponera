@@ -8,7 +8,7 @@
     <?php
         include 'cabecera.php';
     ?>
-    <title>ofertas | La Cuponera</title>
+    <title>Ofertas | La Cuponera</title>
 </head>
 
 <body style="background-color: beige;">
@@ -59,7 +59,7 @@
                                                     <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
                                                     <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
                                                 </ul>                                       
-                                                <a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold; '>Seleccionar</a>                                        
+                                                <a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold;' href = '/LaCuponera/offers/offerDetail/".$oferta['idPromocion']."'>Seleccionar</a>                                        
                                             </div>
                                         </div>
                                     </div>

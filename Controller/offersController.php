@@ -29,6 +29,14 @@ class OffersController extends Controller{
         }                       
                    
     }
+
+    public function offerDetail($idPromo)
+    {
+        $viewBag = array();
+        $oferta = $this->model->getOfferDetail($idPromo);
+        $viewBag['oferta'] = $oferta;
+        $this->render("offerDetails.php", $viewBag);
+    }
 }
 
 
