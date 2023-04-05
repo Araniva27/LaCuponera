@@ -5,6 +5,7 @@ include_once 'Controller/clientController.php';
 include_once 'Controller/companiesController.php';
 include_once 'Controller/offersController.php';
 include_once 'Controller/userController.php';
+include_once 'Controller/sesionController.php';
 
 define('BASEPATH',true);
 

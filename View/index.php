@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php 
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <?php 
       include 'cabecera.php';            
-    ?>
-    <title>Home | La Cuponera</title>
+   ?>
+   <title>Home | La Cuponera</title>
 </head>
 
 <body style="background-color: beige">
@@ -16,6 +16,20 @@
       include 'menu.php';      
    ?>
    <main>
+   <?php
+   session_start();
+   if(isset($_SESSION['success_message']))
+   {
+            ?>
+               <script>
+                  alertify.message('<?php echo  $_SESSION['success_message']?>');
+               </script>
+            <?php
+            unset($_SESSION['success_message']);
+   }
+   ?>
+
+
 		<div class="container-fluid d-none d-sm-block" style="padding: 0">         
          <img src="/LaCuponera/View/assets/img/imgPrincipal4.jpg" class="img-fluid imgPrincipal" alt="Imagen principal">
       </div>
