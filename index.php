@@ -1,5 +1,10 @@
 <?php
-session_start();
+
+if (session_status() == PHP_SESSION_NONE) {
+     session_start();
+}
+   // session_start();
+
 //Incluyendo controladores
 include_once 'Controller/clientController.php';
 include_once 'Controller/companiesController.php';

@@ -31,4 +31,10 @@ class Client extends Model
         $query = "INSERT INTO usuario VALUES (:dui, :usuario, :contra,1 ,0)";
         return $this->setQuery($query,$usuario);
     }
+
+    public function updateUsuarioInfo($usuario=array())
+    {
+        $query = "Update cliente set direccion = :direccion, nombres = :nombres, apellidos= :apellidos, telefono = :tel WHERE dui = :dui";
+        return $this->setQuery($query,$usuario);
+    }
 }

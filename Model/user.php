@@ -21,4 +21,13 @@ class User extends Model
         $query = "UPDATE usuario set estado = 1 where usuario = :correo";
         return $this->setQuery($query,$correo);
     }
+
+    public function showUserInfo($id)
+    {
+        $query ="SELECT nombres, apellidos, cliente.correo as correo, cliente.direccion as direccion, cliente.dui as dui, cliente.telefono as tel FROM usuario inner join cliente on usuario.idUsuario = cliente.dui where usuario.estado = 1 and usuario.idUsuario = :id";
+        return $this->getQuery($query,['id'=>$id]);
+    }
+
 }
+
+   

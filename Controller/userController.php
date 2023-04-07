@@ -4,6 +4,7 @@ require_once 'Controller.php';
 require_once './Model/user.php';
 require_once './Model/validator.php';
 
+
 class UserController extends Controller
 {
     
@@ -12,6 +13,7 @@ class UserController extends Controller
     function __construct()
     {
         $this->model = new User();
+        
     }
 
 
@@ -77,6 +79,14 @@ class UserController extends Controller
                 $viewBag['usuario'] = $usuario;
                 $this->render("validateCode.php", $viewBag);
             }
+    }
+
+    public function getDataUser($idUsuario)
+    {
+        $viewBag = array();
+        $datos = $this->model->showUserInfo($idUsuario);
+        $viewBag['datos'] = $datos;
+        $this->render("updateUsersInfo.php", $viewBag);
     }
 }
 ?>

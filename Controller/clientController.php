@@ -109,5 +109,52 @@ class ClientController extends Controller{
 
         }
     }
+
+    public function updateClientData(){
+        if(isset($_POST['modificar'])){
+            extract($_POST);
+            $datos = array();
+            $errores = array();
+            $datos['nombres'] = $nombres;
+            $datos['apellidos'] = $apellidos;
+            $datos['direccion'] = $direccion;
+            $datos['tel'] = $telefono;            
+            $datos['dui'] = $_SESSION['user']['idUsuario'];
+
+            $_SESSION['errores'] = array();
+
+            if(empty($nombres)){
+                array_push($_SESSION['errores'], 'Debe de ingresar un nombre');
+            }
+
+            if(empty($apellidos)){
+                array_push($_SESSION['errores'], 'Debe ingresar un apellido');
+            }
+
+            if(empty($direccion)){
+                array_push($_SESSION['errores'], 'Debe ingresar una dirección');
+            }
+
+            if(empty($telefono)){
+                array_push($_SESSION['errores'], 'Debe ingresar un número de teléfono');
+            }elseif(!validatePhoneNumber($telefono)){
+                array_push($_SESSION['errores'], 'Verifique el formato del teléfono');
+            }
+
+            if(count($_SESSION['errores'])==0){
+                if($this->model->updateUsuarioInfo($datos)){
+                    $_SESSION['success_message_updateinfo'] = "Datos actualizados correctamente";
+                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+
+                }else{
+                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+                }
+            }else{
+                               
+                header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+                    
+            }
+        }
+    }
 }
 ?>

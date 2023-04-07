@@ -47,9 +47,14 @@ class SesionController extends Controller
                     if($infoUsuario[0]['nivel'] == 1)
                     {
                         $_SESSION["user"]["usuario"]=$infoUsuario[0]['usuario'];
+                        //aqui estoy guardando el id del usuario
+                        $_SESSION["user"]["idUsuario"] = $infoUsuario[0]['idUsuario'];
+                        $_SESSION['id'] = $_SESSION["user"]["idUsuario"];
+                        $_SESSION['nombreU'] = $_SESSION["user"]["usuario"];
                         $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel']; 
                         $_SESSION['success_message'] = "¡Bienvenido " . $_SESSION["user"]["usuario"] . "!";
-                        $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel'];  ;
+                        $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel'];
+                        $_SESSION["user"]["Nombre"]=$infoUsuario[0]['Nombre'];  
                         header('location: /LaCuponera/View/index.php');
                     }
                 }
