@@ -77,8 +77,21 @@ class ClientController extends Controller{
                 array_push($errores, 'Las contraseñas no coinciden');
             }
 
+            if(count($this->model->verificarDui($dui)) != 0){
+                array_push($errores, 'El DUI ya se encuentra registrado');
+            }
+
+            if(count($this->model->verificarCorreo($correo)) != 0){
+                array_push($errores, 'El correo ya se encuentra registrado');
+            }
+
+            if(count($this->model->verificarTelefono($telefono)) != 0){
+                array_push($errores, 'El telefono ya se encuentra registrado');
+            }
+                       
+
             if(count($errores) == 0)
-            {
+            {                           
                 if($this->model->insertarCliente($cliente) >0)
                 {
                     $_SESSION['success_message'] = "Cliente registrado correctamente";                    
@@ -98,7 +111,7 @@ class ClientController extends Controller{
                     $viewBag['errores'] = $errores;
                     $viewBag['cliente'] = $cliente;
                     $this->render("newClient.php", $viewBag);
-                }
+                }                                                 
             }
             else
             {

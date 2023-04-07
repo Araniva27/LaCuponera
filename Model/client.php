@@ -38,5 +38,21 @@ class Client extends Model
         return $this->setQuery($query,$usuario);
     }
 
-    
+    public function verificarDui($dui)
+    {
+        $query = "SELECT * FROM cliente WHERE dui = :dui";
+        return $this->getQuery($query,['dui'=>$dui]);
+    }
+
+    public function verificarCorreo($correo)
+    {
+        $query = "SELECT * FROM cliente WHERE correo = :correo";
+        return $this->getQuery($query,['correo'=>$correo]);
+    }
+
+    public function verificarTelefono($telefono)
+    {
+        $query = "SELECT * FROM cliente WHERE telefono = :telefono";
+        return $this->getQuery($query,['telefono'=>$telefono]);
+    }
 }
