@@ -13,21 +13,41 @@
 
 <body style="background-color: beige">
    <?php
-      include 'menu.php';      
+      include 'menu.php'; 
+      if(session_status() == PHP_SESSION_NONE){
+         session_start();
+      }     
    ?>
    <main>
    <?php
  //  session_start();
    if(isset($_SESSION['success_message']))
    {
-            ?>
-               <script>
-                  alertify.message('<?php echo  $_SESSION['success_message']?>');
-               </script>
-            <?php
-            unset($_SESSION['success_message']);
+      ?>
+         <script>
+            alertify.message('<?php echo  $_SESSION['success_message']?>');
+         </script>
+      <?php
+      unset($_SESSION['success_message']);
    }
    ?>
+
+   <?php
+   //  session_start();
+   if(isset($_SESSION['cerrar_sesion_message']))
+   {
+      ?>
+         <script>
+            alertify.message('<?php echo  $_SESSION['cerrar_sesion_message']?>');
+         </script>
+      <?php
+      unset($_SESSION['cerrar_sesion_message']);
+   }
+   ?>
+
+   
+
+
 
 
 		<div class="container-fluid d-none d-sm-block" style="padding: 0">         

@@ -37,4 +37,6 @@ class Client extends Model
         $query = "Update cliente set direccion = :direccion, nombres = :nombres, apellidos= :apellidos, telefono = :tel WHERE dui = :dui";
         return $this->setQuery($query,$usuario);
     }
+
+    
 }

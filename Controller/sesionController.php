@@ -73,5 +73,12 @@ class SesionController extends Controller
                 $this->render("validateCode.php", $viewBag);
             }
     }
+
+    public function cerrarSesion()
+    {
+        unset($_SESSION['user']);
+        $_SESSION['cerrar_sesion_message'] = "Se ha cerrado la sesión correctamente";
+        header('location: /LaCuponera/View/index.php');
+    }
 }
 ?>

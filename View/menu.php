@@ -31,7 +31,7 @@
                             <a class="nav-link listElement" href="#">Historial de compras</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link listElement" href="#">Cerrar sesión</a>
+                            <a class="nav-link listElement" href="/LaCuponera/sesion/cerrarSesion/">Cerrar sesión</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link listElement" href="/LaCuponera/user/getDataUser/<?php echo $_SESSION['user']['idUsuario'] ?>">Mi perfil</a>
