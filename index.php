@@ -12,6 +12,7 @@ include_once 'Controller/offersController.php';
 include_once 'Controller/userController.php';
 include_once 'Controller/sesionController.php';
 include_once 'Controller\carController.php';
+include_once 'Controller\cuponController.php';
 
 
 define('BASEPATH',true);
