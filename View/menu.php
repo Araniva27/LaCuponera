@@ -28,7 +28,7 @@
                             <a class="nav-link listElement" href="/LaCuponera/car/verCarrito/">Carrito de compras</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link listElement" href="#">Historial de compras</a>
+                            <a class="nav-link listElement" href="/LaCuponera/cupon/index/<?php echo $_SESSION["cliente"]["idCliente"]?>">Historial de compras</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link listElement" href="/LaCuponera/sesion/cerrarSesion/">Cerrar sesión</a>
