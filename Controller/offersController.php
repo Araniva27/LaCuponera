@@ -26,8 +26,7 @@ class OffersController extends Controller{
             $datos = $this->model->get($nombre);
             $viewBag['ofertas'] = $datos;
             $this->render("offers.php", $viewBag); 
-        }                       
-                   
+        }      
     }
 
     public function offerDetail($idPromo)

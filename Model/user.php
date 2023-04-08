@@ -27,7 +27,4 @@ class User extends Model
         $query ="SELECT nombres, apellidos, cliente.correo as correo, cliente.direccion as direccion, cliente.dui as dui, cliente.telefono as tel FROM usuario inner join cliente on usuario.idUsuario = cliente.dui where usuario.estado = 1 and usuario.idUsuario = :id";
         return $this->getQuery($query,['id'=>$id]);
     }
-
 }
-
-   

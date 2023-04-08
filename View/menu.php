@@ -25,7 +25,7 @@
                             <a class="nav-link listElement" aria-current="page" href="/LaCuponera/offers/">Ofertas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link listElement" href="#">Carrito de compras</a>
+                            <a class="nav-link listElement" href="/LaCuponera/car/verCarrito/">Carrito de compras</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link listElement" href="#">Historial de compras</a>
