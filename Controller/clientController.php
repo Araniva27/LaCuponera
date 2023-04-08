@@ -88,7 +88,6 @@ class ClientController extends Controller{
             if(count($this->model->verificarTelefono($telefono)) != 0){
                 array_push($errores, 'El telefono ya se encuentra registrado');
             }
-                       
 
             if(count($errores) == 0)
             {                           

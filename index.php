@@ -1,7 +1,7 @@
 <?php
 
 if (session_status() == PHP_SESSION_NONE) {
-     session_start();
+    session_start();
 }
    // session_start();
 
@@ -11,6 +11,8 @@ include_once 'Controller/companiesController.php';
 include_once 'Controller/offersController.php';
 include_once 'Controller/userController.php';
 include_once 'Controller/sesionController.php';
+include_once 'Controller\carController.php';
+
 
 define('BASEPATH',true);
 
