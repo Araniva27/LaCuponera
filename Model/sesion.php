@@ -13,4 +13,10 @@ class Sesion extends Model
         $infoUsuario = $this->getQuery($query,$usuario);
         return $infoUsuario;
     }
+    public function getIdCliente($idCliente)
+    {
+        $query ="SELECT idCliente FROM usuario inner join cliente on usuario.idUsuario = cliente.dui where usuario.estado = 1 and usuario.idUsuario = :id";
+            return $this->getQuery($query,['id'=>$idCliente]);
+    }
+
 }

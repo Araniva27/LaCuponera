@@ -38,6 +38,15 @@
 			<?php
 			unset($_SESSION['error_cantidad_message']);
         }
+        if(isset($_SESSION['cantidad_error_message']))
+        {
+			?>
+				<script>
+					alertify.error('<?php echo  $_SESSION['cantidad_error_message']?>');
+				</script>
+			<?php
+			unset($_SESSION['cantidad_error_message']);
+        }
 
         /*if(isset($_SESSION['error_entero_message']))
         {
@@ -101,7 +110,7 @@
                                                         <label for='usuario' class='form-label' style = 'font-size: 15px'>Cantidad</label>
                                                         <input type='number'  class='form-control inputBorder' name = 'cantidad'>
                                                     </div> 
-                                                    <input type='hidden' name='titulo' value = ".$oferta['titulo'].">
+                                                    <input type='hidden' name='titulo' value = '".$oferta['titulo']."'>
                                                     <input type='hidden' name='idPromocion' value = ".$oferta['idPromocion'].">
                                                     <input type='hidden' name='precio' value = ".$oferta['precio'].">                                      
                                                     <button type='submit' class='btn btn-primary' name='btnAgregar'>Agregar</button>

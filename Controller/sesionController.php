@@ -46,9 +46,17 @@ class SesionController extends Controller
                 {
                     if($infoUsuario[0]['nivel'] == 1)
                     {
+                        
+        
                         $_SESSION["user"]["usuario"]=$infoUsuario[0]['usuario'];
                         //aqui estoy guardando el id del usuario
                         $_SESSION["user"]["idUsuario"] = $infoUsuario[0]['idUsuario'];
+
+                        $sesion = new Sesion();
+                        $idCliente = $sesion->getIdCliente($_SESSION["user"]["idUsuario"]);
+                        $_SESSION["cliente"]["idCliente"] = $idCliente[0]["idCliente"];
+
+
                         $_SESSION['id'] = $_SESSION["user"]["idUsuario"];
                         $_SESSION['nombreU'] = $_SESSION["user"]["usuario"];
                         $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel']; 
@@ -77,6 +85,7 @@ class SesionController extends Controller
     public function cerrarSesion()
     {
         unset($_SESSION['user']);
+        session_destroy();
         $_SESSION['cerrar_sesion_message'] = "Se ha cerrado la sesión correctamente";
         header('location: /LaCuponera/View/index.php');
     }

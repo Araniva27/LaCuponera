@@ -21,6 +21,12 @@ class Offers extends Model
         return $this->getQuery($query, ['id'=>$id]);
     }
 
+    public function getCantidadOferta($id)
+    {
+        $query = "SELECT cantidad FROM promocion WHERE idPromocion =:id";
+        return $this->getQuery($query, ['id'=>$id]);
+    }
+
     
 }
 ?>

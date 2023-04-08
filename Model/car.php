@@ -24,8 +24,6 @@ require_once 'model.php';
                         </div>";
                             $_SESSION["carrito"][$promocion]["cantidad"]+=$cantidad;
                             $verifica=false;
-                            //$this->mostrar();
-                            //$this->calcular();
                             break;
                         }
                     }
@@ -37,8 +35,6 @@ require_once 'model.php';
                         $_SESSION["carrito"][$promocion]["cantidad"]=$cantidad;
                         $_SESSION["carrito"][$promocion]["precio"]=$precio;
                         $_SESSION["carrito"][$promocion]["idPromocion"]=$idPromocion;
-                        //$this->mostrar();
-                        //$this->calcular();
                     }
                 }
                 else
@@ -49,8 +45,6 @@ require_once 'model.php';
                     $_SESSION["carrito"][$promocion]["cantidad"]=$cantidad;
                     $_SESSION["carrito"][$promocion]["precio"]=$precio;
                     $_SESSION["carrito"][$promocion]["idPromocion"]=$idPromocion;
-                    //$this->mostrar();
-                    //$this->calcular();
                 }
             }
             else
@@ -96,28 +90,27 @@ require_once 'model.php';
             return $this->setQuery($query,$factura);
         }
 
-        public function calcular()
+        public function insertarDetalle($detalle=array())
         {
-            $total;
-            if(isset($_SESSION["carrito"]))
-            {
-                if(count($_SESSION["carrito"])>0)
-                {
-                    
-                    foreach($_SESSION["carrito"] as $indice => $valor)
-                    {
-                        $this->total = $this->total + ($valor["cantidad"] * $valor["precio"]);
-                    }
-                    $total = "<h5>Total: $ $this->total </h5>";
-                }
-                else
-                {
-                    $total = "Los productos han sido eliminados del carrito";
-                }
-            }
-            else
-            {
-                $total = "No hay productos registrados en el carrito";
-            }
+            $query = "INSERT INTO detalleFactura VALUES (NULL, :idFactura,:idPromocion, :cantidad)";
+            return $this->setQuery($query,$detalle);
         }
+        public function actualizarCantidadPromo($promo=array())
+        {
+            $query = "UPDATE promocion SET cantidad = (cantidad - :cantidad) where idPromocion = :idPromocion";
+            return $this->setQuery($query,$promo);
+        }
+
+        public function getIdFactura($idCliente)
+        {
+            $query = "SELECT MAX(idFactura) as Factura FROM factura where idCliente = :id";
+            return $this->getQuery($query,['id'=>$idCliente]);
+        }
+
+        public function getIdDetalle($idFactura)
+        {
+            $query = "SELECT MAX(idDetalleFactura)  FROM detalleFactura where idFactura = :id";
+            return $this->getQuery($query,['id'=>$idFactura]);
+        }
+
 }
