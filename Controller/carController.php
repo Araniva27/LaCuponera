@@ -139,30 +139,31 @@ class CarController extends Controller{
     }
 
 
-    public function generarCupon($idDetalle,$cantidad,$promo)
+    public function generarCupon($promo,$cantidad)
     {
         $codigoEmpresa = $this->model->getCodigoEmpresa($promo);
+        //mt_srand (time());
         $codigoCupones = array();
-        for($i = 0; $i<= $cantidad; $i++)
+        for($i = 0; $i< $cantidad; $i++)
         {
-            $digits = 5;
-
             //generamos un número aleatorio
-            $numero_aleatorio = rand(pow(10,$digits-1),pow(10,$digits)-1);
-            $token = $numero_aleatorio . substr($dui,0,4);
+            $digits = 7;
+            $numero_aleatorio = rand(pow(10, $digits-1), pow(10, $digits)-1);
+            $codigoCupones[$i] = $codigoEmpresa[0]["codigoEmpresa"] ."-". $numero_aleatorio;
         }
+        return $codigoCupones;
     }
 
 
 
     public function insertarDetalle()
     {
-            if(isset($_SESSION["carrito"]))
+        if(isset($_SESSION["carrito"]))
+        {
+            if(count($_SESSION["carrito"])>0)
             {
-                if(count($_SESSION["carrito"])>0)
+                foreach($_SESSION["carrito"] as $indice => $arreglo)
                 {
-                    foreach($_SESSION["carrito"] as $indice => $arreglo)
-                    {
                         $cantidad = $_SESSION["carrito"][$indice]["cantidad"];
                         $idPromocion = $_SESSION["carrito"][$indice]["idPromocion"];
                         $idFactura = $this->model->getIdFactura($_SESSION["cliente"]["idCliente"]);
@@ -180,9 +181,25 @@ class CarController extends Controller{
                         $promo["idPromocion"] = $idPromocion;
                         
 
-                        $idDetalle= $this->model->getIdDetalle($idFactura[0]["Factura"]);
+                        $idDetalle = $this->model->getIdDetalle($idFactura[0]["Factura"]);
 
-                        $this->generarCupon($idDetalle[0]["idDetalleFactura"],$cantidad,$promo);
+                        $detalle = $idDetalle[0]["idDetalleFactura"];
+
+
+                        //Se generan los cupones y se guardan en un arreglo
+                        $cupones = $this->generarCupon($idPromocion,$cantidad);
+
+                        $cupon = array();
+                        
+
+
+                        foreach($cupones as $indice => $valor)
+                        {
+                            $cupon = array();
+                            $cupon["idDetalleFactura"] = $detalle;
+                            $cupon["codigo"] = $valor;
+                            $this->model->insertarCupon($cupon);
+                        }
 
                         $this->model->actualizarCantidadPromo($promo);
                     }

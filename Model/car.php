@@ -109,8 +109,19 @@ require_once 'model.php';
 
         public function getIdDetalle($idFactura)
         {
-            $query = "SELECT MAX(idDetalleFactura)  FROM detalleFactura where idFactura = :id";
+            $query = "SELECT MAX(idDetalleFactura) as idDetalleFactura FROM detalleFactura where idFactura = :id";
             return $this->getQuery($query,['id'=>$idFactura]);
         }
 
+        public function getCodigoEmpresa($idPromo)
+        {
+            $query = "SELECT codigoEmpresa FROM empresa INNER JOIN promocion ON empresa.idEmpresa = promocion.idEmpresa WHERE idPromocion = :id";
+            return $this->getQuery($query,['id'=>$idPromo]);
+        }
+
+        public function insertarCupon($cupon=array())
+        {
+            $query = "INSERT INTO cupon VALUES (NULL, :codigo,1, :idDetalleFactura)";
+            return $this->setQuery($query,$cupon);
+        }
 }
