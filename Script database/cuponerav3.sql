@@ -1,6 +1,7 @@
 create database cuponera;
 use cuponera;
 
+
 create table usuario
 (
   idUsuario varchar(100) primary key,
@@ -9,7 +10,9 @@ create table usuario
   nivel varchar(10) not null,
   estado int not null
 );
-select * from usuario;
+INSERT INTO `usuario` (`idUsuario`, `usuario`, `contra`, `nivel`, `estado`) VALUES
+("12345678-9",'cornejoerick7@gmail.com', '123', "1", 1);
+
 
 create table cliente
 (
@@ -21,6 +24,8 @@ create table cliente
   dui varchar(10) not null unique,
   telefono varchar(9) not null unique
 );
+INSERT INTO `cliente` (`idCliente`, `nombres`, `apellidos`, `correo`, `direccion`, `dui`, `telefono`) VALUES
+(null, 'Erick', "Cornejo", 'cornejoerick7@gmail.com', 'san salvador', "12345678-9", '7867-4625');
 
 create table rubro
 (
@@ -45,8 +50,11 @@ create table empresa
   img varchar(100) not null
 );
 INSERT INTO `empresa` (`idEmpresa`, `nombre`, `codigoEmpresa`, `direccion`, `nombreContacto`, `telefono`, `correo`, `comision`, `idRubro`, `img`) VALUES
-(1, 'Pollo Campero', 'PC0125', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL),
-(2, 'Pollo Campero', 'PC0125', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL);
+(null, 'Pollo Campero', 'PC0125', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL),
+(null, 'Pollo Campero', 'PC0125', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL);
+INSERT INTO `empresa` (`idEmpresa`, `nombre`, `codigoEmpresa`, `direccion`, `nombreContacto`, `telefono`, `correo`, `comision`, `idRubro`, `img`) VALUES
+(null, 'PIZZA HUT', 'PH0456', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL),
+(null, 'BURGER KING', 'BK0789', 'qwertyui', 'Fabiola', '2298-7451', 'pollo@gmail.com', 0.5, 1, NULL);
 
 
 create table empleado
@@ -74,8 +82,17 @@ create table promocion
   constraint fk_promocion_empresa foreign key(idEmpresa) references empresa(idEmpresa)
 );
 INSERT INTO `promocion` (`idPromocion`, `titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
-(1, 'Camperitos', 7.99, '2023-03-10', '2023-04-07', 5, 'pollito', 1, 1, 1);
-
+(1, 'Camperitos', 7.99, '2023-03-10', '2023-04-07', 100, 'pollito', 1, 1, 1);
+INSERT INTO `promocion` (`titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
+('Camperitos 2', 7.99, '2023-03-10', '2023-04-20', 100, 'pollito', 1, 1, 1);
+INSERT INTO `promocion` (`titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
+('Alitas 2', 7.99, '2023-03-10', '2023-04-20', 100, 'pollito', 1, 1, 1);
+INSERT INTO `promocion` (`titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
+('Carnitas', 20.99, '2023-03-10', '2023-04-20', 100, 'pescado envuelto', 1, 1, 1);
+INSERT INTO `promocion` (`titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
+('Papitas', 20.99, '2023-03-10', '2023-04-20',100, 'pescado envuelto', 1, 1, 3);
+INSERT INTO `promocion` (`titulo`, `precio`, `fechaInicio`, `fechaFin`, `cantidad`, `descripcion`, `estadoActivo`, `estadoAprobacion`, `idEmpresa`) VALUES
+('Pupusas', 20.99, '2023-03-10', '2023-04-20', 100, 'pescado envuelto', 1, 1, 4);
 
 create table factura
 (
@@ -86,12 +103,12 @@ create table factura
   constraint fk_factura_cliente foreign key(idCliente) references cliente(idCliente)
 );
 
-
 create table detallefactura
 (
   idDetalleFactura int auto_increment primary key,
   idFactura int not null,
   idPromocion int not null,
+  cantidad int not null,
   constraint fk_detalle_promocion foreign key(idPromocion) references promocion(idPromocion),
   constraint fk_detalle_factura foreign key(idFactura) references factura(idFactura)
 );
@@ -123,5 +140,3 @@ create table token
   token varchar(100) not null,
   correo varchar(100) not null
 );
-
-select * from token;
