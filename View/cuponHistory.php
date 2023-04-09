@@ -18,6 +18,10 @@
 			session_start();
 		}
 
+		if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
+
 		date_default_timezone_set('America/El_Salvador');
 	?>
 	<main>

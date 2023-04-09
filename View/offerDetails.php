@@ -12,6 +12,11 @@
 <body style="background-color: beige;">
     <?php
         include 'menu.php';
+
+        if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
+        
     ?>
 
     <div class="container-fluid" style="margin-top:20px; margin-bottom:20px">

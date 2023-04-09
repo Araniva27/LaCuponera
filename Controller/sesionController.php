@@ -11,6 +11,10 @@ class SesionController extends Controller
 
     function __construct()
     {
+        if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
+        
         $this->model = new Sesion();
     }
 

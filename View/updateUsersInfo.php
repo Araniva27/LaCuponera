@@ -10,6 +10,10 @@
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+
+        if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
     ?>
     <title>Mi perfil | La Cuponera</title>
 </head>

@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         include 'cabecera.php';
+
+        if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
     ?>
     <title>Ofertas | La Cuponera</title>
 </head>

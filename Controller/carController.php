@@ -16,6 +16,10 @@ class CarController extends Controller
 
     function __construct()
     {
+        if(is_null($_SESSION['user'])){
+            header('location:/LaCuponera/View/index.php');
+        }
+
         $this->model = new Carrito();
         $this->modelOffer = new Offers();
         $this->modelCorreo = new Correo();
@@ -150,6 +154,8 @@ class CarController extends Controller
                     $this->render('carrito.php', $viewBag);
                 }
             }
+        }else{
+            echo 'hola';
         }
     }
 
