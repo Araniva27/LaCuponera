@@ -48,6 +48,16 @@
 			unset($_SESSION['cantidad_error_message']);
         }
 
+        if(isset($_SESSION['compra_exitosa_message']))
+        {
+			?>
+				<script>
+					alertify.message('<?php echo  $_SESSION['compra_exitosa_message']?>');
+				</script>
+			<?php
+			unset($_SESSION['compra_exitosa_message']);
+        }
+
         /*if(isset($_SESSION['error_entero_message']))
         {
 			?>

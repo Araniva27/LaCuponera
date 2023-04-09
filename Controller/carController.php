@@ -15,6 +15,8 @@ class CarController extends Controller{
         $this->modelOffer = new Offers();
     }
 
+
+
     public function verCarrito()
     {
         $this->render('carrito.php');
@@ -30,17 +32,20 @@ class CarController extends Controller{
                             La lista de productos ha sido actualizada
                         </div>";
                 unset($_SESSION["carrito"]);
+                //header("Location:/LaCuponera/View/index.php");
             }
             else
             {
-                echo "<div class='alert alert-primary' role='alert'>
-                    No hay productos en el carrito</div>";
+                /*echo "<div class='alert alert-primary' role='alert'>
+                    No hay productos en el carrito</div>";*/
             }
         }
         else
         {
-            echo "<div class='alert alert-primary' role='alert'>
-            No hay productos en el carrito</div>";
+            //header("Location:/LaCuponera/View/index.php");
+
+            /*echo "<div class='alert alert-primary' role='alert'>
+            No hay productos en el carrito</div>";*/
         }
     }
 
@@ -123,7 +128,10 @@ class CarController extends Controller{
 
                 $this->model->insertarFactura($factura);
                 $this->insertarDetalle();
-                //$this->reiniciar();
+                $this->reiniciar();
+                 //GENERAR FACTURA
+                $_SESSION['compra_exitosa_message'] = "Su compra ha sido realizada correctamente. Revise su correo";
+                header("Location:/LaCuponera/offers/index");
             }
             else
             {
