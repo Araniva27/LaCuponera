@@ -79,4 +79,39 @@
             return false;
         }
     }
+
+    function validateVisa($value)
+    {
+        if(preg_match('/^4[0-9]{12}(?:[0-9]{3})?$/',$value)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function validateMastercard($value)
+    {
+        if(preg_match('/^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$/',$value)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function validateCVV($value)
+    {
+        if(preg_match('/^\d{3,4}$/', $value)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    function validateDateCard($value) {
+        if(preg_match('/^(0[1-9]|1[0-2])\/((\d{2})|(\d{4}))$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 ?>
