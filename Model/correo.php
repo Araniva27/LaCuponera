@@ -66,6 +66,51 @@ class Correo extends Model
 			}
     }
 
+	public function enviarFactura()
+    {
+        //Create an instance; passing `true` enables exceptions
+		$mail = new PHPMailer(true);
+
+		try 
+		{
+			//Server settings
+			//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+			$mail->isSMTP();                                            //Send using SMTP
+			$mail->Host       = 'smtp.gmail.com';    					//Set the SMTP server to send through
+			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+			$mail->Username   = 'correoscotizacionesphp@gmail.com';                     //SMTP username
+			$mail->Password   = 'rwfhqawserqodctq';                               //SMTP password
+			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+			$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+			//Recipients
+			$mail->setFrom('correoscotizacionesphp@gmail.com', 'LA CUPONERA');
+			$mail->addAddress($_SESSION["user"]["usuario"]); 
+
+
+			//Attachments
+			$mail->addAttachment('pdf/factura.pdf');        //Add attachments
+
+
+			//Content
+			$mail->isHTML(true);                                  //Set email format to HTML
+			$mail->Subject = 'FACTURA';
+			/*$mail->Body    = '<b>Para validar su correo debe ingresar el siguiente token:'. $token.'</b>';*/
+            $mail->Body    = '<b>Su compra ha sido realizada con exito.<br> Su factura ha sido adjuntada</br>';
+
+			$mail->send();
+		} 
+			catch (Exception $e) 
+			{
+				echo "<div class='container-fluid' style = 'margin-top: 20px'>
+							<div class='alert alert-danger' role='alert'>
+							Message could not be sent. Mailer Error: {$mail->ErrorInfo}
+							</div>
+						</div>
+					";
+			}
+    }
+
     public function generarToken($dui)
     {
         //alimentamos el generador de aleatorios

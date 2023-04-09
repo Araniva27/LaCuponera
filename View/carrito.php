@@ -95,6 +95,8 @@
                     }
                 ?>
                 <a href="/LaCuponera/car/reiniciar/" class="btn btn-primary">Limpiar</a>
+                <!-formulario de pago->
+                
                 <a href="/LaCuponera/car/crearFactura/" class="btn btn-primary">Pagar</a>
             </div>
         </div>

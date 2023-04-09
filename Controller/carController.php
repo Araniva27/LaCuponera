@@ -4,15 +4,19 @@ require_once 'Controller.php';
 require_once './Model/car.php';
 require_once './Model/offers.php';
 require_once './Model/validator.php';
+require_once './Model/correo.php';
+//include 'generarPDF.php';
 
 class CarController extends Controller{
     
     private $model;
     private $modelOffer;
+    private $modelCorreo;
 
     function __construct(){
         $this->model = new Carrito();
         $this->modelOffer = new Offers();
+        $this->modelCorreo = new Correo();
     }
 
 
@@ -28,24 +32,8 @@ class CarController extends Controller{
         {
             if(count($_SESSION["carrito"])>0)
             {
-                echo "<div class='alert alert-primary' role='alert'>
-                            La lista de productos ha sido actualizada
-                        </div>";
                 unset($_SESSION["carrito"]);
-                //header("Location:/LaCuponera/View/index.php");
             }
-            else
-            {
-                /*echo "<div class='alert alert-primary' role='alert'>
-                    No hay productos en el carrito</div>";*/
-            }
-        }
-        else
-        {
-            //header("Location:/LaCuponera/View/index.php");
-
-            /*echo "<div class='alert alert-primary' role='alert'>
-            No hay productos en el carrito</div>";*/
         }
     }
 
@@ -128,10 +116,15 @@ class CarController extends Controller{
 
                 $this->model->insertarFactura($factura);
                 $this->insertarDetalle();
+
+                //GENERAR FACTURA
+                crearPDFFactura();
+                $this->modelCorreo->enviarFactura();
                 $this->reiniciar();
-                 //GENERAR FACTURA
                 $_SESSION['compra_exitosa_message'] = "Su compra ha sido realizada correctamente. Revise su correo";
                 header("Location:/LaCuponera/offers/index");
+                
+                
             }
             else
             {
@@ -139,10 +132,6 @@ class CarController extends Controller{
                             La lista de productos se ha actualizado
                         </div>";
             }
-            }
-        else
-        {
-                echo "<div class='alert alert-primary' role='alert'>No hay productos agregados</div>";
         }
     }
 

@@ -7,7 +7,8 @@ require_once './Model/correo.php';
 include 'generarPDF.php';
 
 
-class CuponController extends Controller{
+class CuponController extends Controller
+{
     
     private $model;
 
