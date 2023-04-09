@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         include 'cabecera.php';
-
-        if(is_null($_SESSION['user'])){
-            header('location:/LaCuponera/View/index.php');
-        }
     ?>
     <title>Ofertas | La Cuponera</title>
 </head>
@@ -99,35 +95,37 @@
         </div>                    
                     
         <div class="container-fluid" style="margin-top: 20px;">
-            <div class="row">
+           
                 <?php      
                     if(is_array($ofertas) || count($ofertas) == 0){
                         foreach($ofertas as $oferta)
                         {
                             echo "
                             <form method='post' action='/LaCuponera/car/agregarPromo/'>
-                                <div class='col-lg-6' style = 'margin-top:15px'>
-                                    <div class='card'>                        
-                                        <div class='card-body'>                            
-                                            <div class='row'>
-                                                <div class='col-4'>
-                                                    <img src='/LaCuponera/View/assets/img/".$oferta['Imagen']."' class='card-img-top' alt='...' width='200px' height='200px'>
-                                                </div>
-                                                <div class='col-8'>
-                                                    <h3 class='card-title'>".$oferta['Empresa']."</h3>
-                                                    <ul>
-                                                        <li style='font-size: 23px'><b>Título de la oferta:</b> ".$oferta['titulo']."</li>
-                                                        <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
-                                                        <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
-                                                    </ul>
-                                                    <div class='mb-3'>
-                                                        <label for='usuario' class='form-label' style = 'font-size: 15px'>Cantidad</label>
-                                                        <input type='number'  class='form-control inputBorder' name = 'cantidad'>
-                                                    </div> 
-                                                    <input type='hidden' name='titulo' value = '".$oferta['titulo']."'>
-                                                    <input type='hidden' name='idPromocion' value = ".$oferta['idPromocion'].">
-                                                    <input type='hidden' name='precio' value = ".$oferta['precio'].">                                      
-                                                    <button type='submit' class='btn btn-primary' name='btnAgregar'>Agregar</button>
+                                <div class='row'>
+                                    <div class='col-lg-12' style = 'margin-top:15px'>
+                                        <div class='card'>                        
+                                            <div class='card-body'>                            
+                                                <div class='row'>
+                                                    <div class='col-4'>
+                                                        <img src='/LaCuponera/View/assets/img/".$oferta['Imagen']."' class='card-img-top' alt='...' width='200px' height='200px'>
+                                                    </div>
+                                                    <div class='col-8'>
+                                                        <h3 class='card-title'>".$oferta['Empresa']."</h3>
+                                                        <ul>
+                                                            <li style='font-size: 23px'><b>Título de la oferta:</b> ".$oferta['titulo']."</li>
+                                                            <li style='font-size: 23px'><b>Descripción:</b> ".$oferta['descripcion']."</li>
+                                                            <li style='font-size: 23px'><b>Precio ($):</b> ".$oferta['precio']."</li>
+                                                        </ul>
+                                                        <div class='mb-3'>
+                                                            <label for='usuario' class='form-label' style = 'font-size: 15px'>Cantidad</label>
+                                                            <input type='number'  class='form-control inputBorder' name = 'cantidad'>
+                                                        </div> 
+                                                        <input type='hidden' name='titulo' value = '".$oferta['titulo']."'>
+                                                        <input type='hidden' name='idPromocion' value = ".$oferta['idPromocion'].">
+                                                        <input type='hidden' name='precio' value = ".$oferta['precio'].">                                      
+                                                        <button type='submit' class='btn btn-primary' name='btnAgregar'>Agregar</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,8 +139,7 @@
                     }                             
                         
 
-                ?>
-            </div>
+                ?>            
                 
         </div>
     </main>
