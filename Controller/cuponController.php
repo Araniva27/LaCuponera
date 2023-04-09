@@ -4,6 +4,8 @@ require_once 'Controller.php';
 require_once './Model/cupon.php';
 require_once './Model/validator.php';
 require_once './Model/correo.php';
+include 'generarPDF.php';
+
 
 class CuponController extends Controller{
     
@@ -36,6 +38,14 @@ class CuponController extends Controller{
         $cupones = $this->model->getCuponesVencidos($idCliente);
         $viewBag['cupones'] = $cupones;  
         $this->render("cuponHistory.php",$viewBag);
+    }
+
+    public function generarPDFCupones($idCupon)
+    {
+        $arregloCupon = array();
+        $cupon = $this->model->getCupon($idCupon);
+        $arregloCupon['cupones'] = $cupon;
+        crearPDFCupones($arregloCupon);
     }
 
 }

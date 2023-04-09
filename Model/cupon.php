@@ -37,6 +37,16 @@ class Cupon extends Model
                   INNER JOIN cliente ON factura.idCliente= cliente.idCliente WHERE cliente.idCliente = :id AND cupon.estadoCUPON = 1 AND CURRENT_DATE() > promocion.fechaFin";
         return $this->getQuery($query,['id'=>$idCliente]);
     }
+
+    public function getCupon($idCupon)
+    {         
+         $query = "SELECT promocion.titulo as Promocion, promocion.fechaInicio as Inicio, promocion.fechaFin as Fin, 
+         cupon.codigoCupon as CodigoC, empresa.nombre as Empresa FROM cupon INNER JOIN detallefactura ON 
+         cupon.idDetalleFactura = detallefactura.idDetalleFactura INNER JOIN promocion ON detallefactura.idPromocion = promocion.idPromocion 
+         INNER JOIN empresa ON empresa.idEmpresa = promocion.idEmpresa INNER JOIN factura ON detallefactura.idFactura = factura.idFactura 
+         INNER JOIN cliente ON factura.idCliente= cliente.idCliente WHERE  cupon.estadoCUPON = 1 AND cupon.codigoCupon = :id";
+        return $this->getQuery($query,['id'=>$idCupon]);
+    }
     
 }
 ?>

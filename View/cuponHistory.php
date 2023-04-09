@@ -61,7 +61,7 @@
 														<li style='font-size: 15px'><b>Fecha fin:</b> ".$cupon['Fin']."</li>
 														<li style='font-size: 15px'><b>Estado:</b> Disponible</li>
 													</ul>		
-													<a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold;' href='/LaCuponera/offers/offerDetail/'>Generar PDF</a>											
+													<a type='submit' class='btn btn-primary text-center' style='background-color: #7D2972; color : white; height: 37px; width:150px; font-size:17px; font-weight:bold;' href='/LaCuponera/cupon/generarPDFCupones/".$cupon['CodigoC']."'>Generar PDF</a>											
 												</div>
 											</div>
 										</div>
