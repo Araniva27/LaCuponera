@@ -43,13 +43,7 @@
 			<?php
 			unset($_SESSION['error_actualizar_contra']);
     }
-
-
-    
 ?>
-
-
-
 <?php
 if(isset($_SESSION['success_message']))
 {
