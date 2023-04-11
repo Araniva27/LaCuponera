@@ -24,8 +24,10 @@ class ClientController extends Controller{
         $this->render("newClient.php");
     }
 
-    public function add(){
-        if(isset($_POST['registrar'])){
+    public function add()
+    {
+        if(isset($_POST['registrar']))
+        {
             extract($_POST);
             $errores = array();
             $cliente = array();
@@ -42,40 +44,61 @@ class ClientController extends Controller{
             $usuario['usuario'] = $correo;
             
             
-            if(empty($nombres)){
+            if(empty($nombres))
+            {
                 array_push($errores, 'Debe de ingresar un nombre');
             }
-
-            if(empty($apellidos)){
-                array_push($errores, 'Debe de ingresar un apellido');
+            else if(!ctype_alpha($nombres))
+            {
+                array_push($errores, 'Formato incorrecto en el nombre');
             }
 
-            if(empty($correo) || !isset($correo)){
+            if(empty($apellidos))
+            {
+                array_push($errores, 'Debe de ingresar un apellido');
+            }
+            else if(!ctype_alpha($apellidos))
+            {
+                array_push($errores, 'Formato incorrecto en el nombre');
+            }
+
+            if(empty($correo) || !isset($correo))
+            {
                 array_push($errores, 'Debe de ingresar un correo');
             }else if(!validateEmail($correo)){
                 array_push($errores, 'Formato de correo incorrecto');
             }
 
-            if(empty($direccion)){
+            if(empty($direccion))
+            {
                 array_push($errores, 'Debe de ingresar una dirección');
             }
 
-            if(empty($dui) || !isset($dui)){
+            if(empty($dui) || !isset($dui))
+            {
                 array_push($errores, 'Debe de ingresar un DUI correcto');
-            }else if(!validateDUI($dui)){
+            }
+            else if(!validateDUI($dui))
+            {
                 array_push($errores, 'Formato de DUI incorrecto');
             }
             
 
-            if(empty($telefono) || !isset($telefono)){
+            if(empty($telefono) || !isset($telefono))
+            {
                 array_push($errores, 'Debe de ingresar un número de teléfono');
-            }else if(!validatePhoneNumber($telefono)){
+            }
+            else if(!validatePhoneNumber($telefono))
+            {
                 array_push($errores, 'Formato de teléfono incorrecto');
             }
             
-            if(empty($contra) || empty($contraRep)){
+            if(empty($contra) || empty($contraRep))
+            {
                 array_push($errores, 'Debe de ingresar contraseña y su verificación');
-            }else if($contra != $contraRep){
+            }
+            else if($contra != $contraRep)
+            {
                 array_push($errores, 'Las contraseñas no coinciden');
             }
 

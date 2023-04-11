@@ -97,6 +97,9 @@
 										<div class ="col-12 text-center">
 											<a href="/LaCuponera/View/recuperarContra.php/">Olvide mi contraseña</a>
 										</div>
+										<div class ="col-12 text-center">
+											<a href="/LaCuponera/View/validateCode.php/">Activar cuenta</a>
+										</div>
 									</div>	
 								</div>											
 							</form>

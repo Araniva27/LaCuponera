@@ -34,11 +34,16 @@ class CarController extends Controller
 
     public function reiniciar()
     {
-        if (isset($_SESSION["carrito"])) {
-            if (count($_SESSION["carrito"]) > 0) {
+        if (isset($_SESSION["carrito"])) 
+        {
+            if (count($_SESSION["carrito"]) > 0) 
+            {
+                echo "hola";
                 unset($_SESSION["carrito"]);
             }
+            header('location:/LaCuponera/View/carrito.php');
         }
+        header('location:/LaCuponera/View/carrito.php');
     }
 
     public function agregarPromo()
@@ -47,7 +52,6 @@ class CarController extends Controller
             extract($_POST);
             $errores = array();
             $carrito = new Carrito();
-
 
             if ($cantidad > 0) {
                 $existencia = $this->modelOffer->getCantidadOferta($idPromocion);
@@ -93,20 +97,23 @@ class CarController extends Controller
     public function crearFactura()
     {
         $errores = array();
-        if (isset($_SESSION["carrito"])) {
-
-            if (isset($_POST['pagar'])) {
+        if (isset($_SESSION["carrito"])) 
+        {
+            if (isset($_POST['pagar'])) 
+            {
                 extract($_POST);
 
-                if (empty($numTarjeta)) {
+                if (empty($numTarjeta))
+                {
                     array_push($errores, "El número de tarjeta no puede ser vacío.");
                 }
 
-                if (!validateVisa($numTarjeta)) {
+                /*if (!validateVisa($numTarjeta)) 
+                {
                     array_push($errores, "La tarjeta debe ser Visa.");
-                } 
+                } */
                 
-               /* if (!validateMastercard($numTarjeta)) {
+                /* if (!validateMastercard($numTarjeta)) {
                     array_push($errores, "La tarjeta debe ser Mastercard.");
                 }*/
 
@@ -126,8 +133,10 @@ class CarController extends Controller
                     array_push($errores, "La fecha no cumple con el formato establecido MM/YYYY.");
                 }
 
-                if (count($errores) == 0) {
-                    if (count($_SESSION["carrito"]) > 0) {
+                if (count($errores) == 0) 
+                {
+                    if (count($_SESSION["carrito"]) > 0) 
+                    {
                         $totalProductos = count($_SESSION["carrito"]);
                         $factura = array();
                         $idCliente = $this->model->getIdCliente($_SESSION["user"]["idUsuario"]);
@@ -140,22 +149,34 @@ class CarController extends Controller
                         //GENERAR FACTURA
                         crearPDFFactura();
                         $this->modelCorreo->enviarFactura();
-                        $this->reiniciar();
+
+
+                        //Limpiamos el carrito y redireccionamos al index
+                        unset($_SESSION["carrito"]);
+
+                        //mensaje de exito
                         $_SESSION['compra_exitosa_message'] = "Su compra ha sido realizada correctamente. Revise su correo";
                         header("Location:/LaCuponera/offers/index");
-                    } else {
+                    } 
+                    else 
+                    {
                         echo "<div class='alert alert-primary' role='alert'>
                                         La lista de productos se ha actualizado
                                     </div>";
                     }
-                } else {
+                } 
+                else 
+                {
                     $viewBag = array();
                     $viewBag['errores'] = $errores;
                     $this->render('carrito.php', $viewBag);
                 }
             }
-        }else{
-            echo 'hola';
+        }
+        else
+        {
+            $_SESSION['carrito_vacio'] = "No hay productos agregados al carrito";
+            header("Location:/LaCuponera/view/carrito.php");
         }
     }
 

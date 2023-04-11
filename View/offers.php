@@ -23,7 +23,7 @@
         {
 			?>
 				<script>
-					alertify.message('<?php echo  $_SESSION['producto_agregado_message']?>');
+					alertify.success('<?php echo  $_SESSION['producto_agregado_message']?>');
 				</script>
 			<?php
 			unset($_SESSION['producto_agregado_message']);
@@ -52,24 +52,13 @@
         {
 			?>
 				<script>
-					alertify.message('<?php echo  $_SESSION['compra_exitosa_message']?>');
+					alertify.success('<?php echo  $_SESSION['compra_exitosa_message']?>');
 				</script>
 			<?php
-			unset($_SESSION['compra_exitosa_message']);
+            unset($_SESSION['compra_exitosa_message']);
         }
-
-        /*if(isset($_SESSION['error_entero_message']))
-        {
-			?>
-				<script>
-					alertify.error('<?php echo  $_SESSION['error_entero_message']?>');
-				</script>
-			<?php
-			unset($_SESSION['error_entero_message']);
-        }*/
     ?>
     
-        
     <main>
         <div class="container-fluid">
             <h1 class="text-center" style="color: #7D2972; margin-top:20px;">Ofertas</h1>
@@ -95,7 +84,6 @@
         </div>                    
                     
         <div class="container-fluid" style="margin-top: 20px;">
-           
                 <?php      
                     if(is_array($ofertas) || count($ofertas) == 0){
                         foreach($ofertas as $oferta)
@@ -119,7 +107,7 @@
                                                         </ul>
                                                         <div class='mb-3'>
                                                             <label for='usuario' class='form-label' style = 'font-size: 15px'>Cantidad</label>
-                                                            <input type='number'  class='form-control inputBorder' name = 'cantidad'>
+                                                            <input type='number' min='1' value='1' class='form-control inputBorder' name = 'cantidad'>
                                                         </div> 
                                                         <input type='hidden' name='titulo' value = '".$oferta['titulo']."'>
                                                         <input type='hidden' name='idPromocion' value = ".$oferta['idPromocion'].">
@@ -134,13 +122,12 @@
                             </form>
                             ";
                         }
-                    } else{
+                    } 
+                    else
+                    {
                         echo "No se han encontrado resultados";
-                    }                             
-                        
-
-                ?>            
-                
+                    }
+                ?>
         </div>
     </main>
 </body>

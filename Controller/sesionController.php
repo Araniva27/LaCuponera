@@ -11,10 +11,6 @@ class SesionController extends Controller
 
     function __construct()
     {
-        if(is_null($_SESSION['user'])){
-            header('location:/LaCuponera/View/index.php');
-        }
-        
         $this->model = new Sesion();
     }
 
@@ -48,31 +44,43 @@ class SesionController extends Controller
                 $infoUsuario = $this->model->getUsuario($usuario);
                 if(count($infoUsuario) > 0)
                 {
-                    if($infoUsuario[0]['nivel'] == 1)
+                    //validamos que la cuenta este activa
+                    if($infoUsuario[0]["usuario"] == $correo && $infoUsuario[0]["estado"] == 1)
                     {
-                        
-        
-                        $_SESSION["user"]["usuario"]=$infoUsuario[0]['usuario'];
-                        //aqui estoy guardando el id del usuario
-                        $_SESSION["user"]["idUsuario"] = $infoUsuario[0]['idUsuario'];
+                        //Nivel de usuario
+                        if($infoUsuario[0]['nivel'] == 1)
+                        {
+                            $_SESSION["user"]["usuario"]=$infoUsuario[0]['usuario'];
+                            //aqui estoy guardando el id del usuario
+                            $_SESSION["user"]["idUsuario"] = $infoUsuario[0]['idUsuario'];
 
-                        $sesion = new Sesion();
-                        $idCliente = $sesion->getIdCliente($_SESSION["user"]["idUsuario"]);
-                        $_SESSION["cliente"]["idCliente"] = $idCliente[0]["idCliente"];
+                            $sesion = new Sesion();
+                            $idCliente = $sesion->getIdCliente($_SESSION["user"]["idUsuario"]);
+                            $_SESSION["cliente"]["idCliente"] = $idCliente[0]["idCliente"];
 
 
-                        $_SESSION['id'] = $_SESSION["user"]["idUsuario"];
-                        $_SESSION['nombreU'] = $_SESSION["user"]["usuario"];
-                        $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel']; 
-                        $_SESSION['success_message'] = "¡Bienvenido " . $_SESSION["user"]["usuario"] . "!";
-                        $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel'];
-                        $_SESSION["user"]["Nombre"]=$infoUsuario[0]['Nombre'];  
-                        header('location: /LaCuponera/View/index.php');
+                            $_SESSION['id'] = $_SESSION["user"]["idUsuario"];
+                            $_SESSION['nombreU'] = $_SESSION["user"]["usuario"];
+                            $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel']; 
+                            $_SESSION['success_message'] = "¡Bienvenido " . $_SESSION["user"]["usuario"] . "!";
+                            $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel'];
+                            $_SESSION["user"]["Nombre"]=$infoUsuario[0]['Nombre'];
+                            echo "hola";  
+                            header('location: /LaCuponera/View/index.php');
+                        }
                     }
+                    else
+                    {
+                        array_push($errores, "Su cuenta no ha sido activada. Revise su correo e ingrese el token para validar su correo");
+                        $viewBag['errores'] = $errores;
+                        $viewBag['usuario'] = $usuario;
+                        $this->render("login.php", $viewBag);
+                    }                    
                 }
                 else
                 {
-                    array_push($errores, "Error al iniciar sesión");
+                    
+                    array_push($errores, "Credenciales incorrectas");
                     $viewBag['errores'] = $errores;
                     $viewBag['usuario'] = $usuario;
                     $this->render("login.php", $viewBag);

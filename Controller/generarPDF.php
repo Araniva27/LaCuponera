@@ -200,13 +200,4 @@
             file_put_contents('pdf/factura.pdf',$pdf);    
             
             //Abrir PDF
-
-            // Enviar las cabeceras para indicar que el archivo es un PDF
-            /*header('Content-Type: application/pdf');
-            header('Content-Disposition: inline; filename="documento.pdf"');
-            header('Content-Transfer-Encoding: binary');
-            header('Content-Length: ' . filesize('pdf/factura.pdf'));
-
-            readfile('pdf/factura.pdf');*/
-
 	}
