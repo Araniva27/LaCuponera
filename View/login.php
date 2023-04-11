@@ -36,22 +36,35 @@
         
         ?>
 <?php
-if(isset($_SESSION['success_message']))
-{
-			?>
-				<script>
-					alertify.message('<?php echo  $_SESSION['success_message']?>');
-				</script>
-			<?php
-			unset($_SESSION['success_message']);
-}
+	if(session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}   
+	if(isset($_SESSION['success_message']))
+	{
+				?>
+					<script>
+						alertify.message('<?php echo  $_SESSION['success_message']?>');
+					</script>
+				<?php
+				unset($_SESSION['success_message']);
+	}
+	if(isset($_SESSION['contra_nueva']))
+	{
+				?>
+					<script>
+						alertify.message('<?php echo  $_SESSION['contra_nueva']?>');
+					</script>
+				<?php
+				unset($_SESSION['contra_nueva']);
+	}
 ?>
 
 <main>
 		<div class="container" style = "height: 100%; width:100%">
 			<div class="row justify-content-center">
 				<div class="col-md-6">					
-					<div class="card cardShadow" style = "margin-top: 30%; height: 400px; width:370px; margin-left: 17%;">
+					<div class="card cardShadow" style = "margin-top: 30%; height: 450px; width:370px; margin-left: 17%;">
 						<div class="card-body">
 							<form id = "formLogin" name = "formLogin" action = "/LaCuponera/sesion/Iniciar" method="POST">
 								<div class="row">									
@@ -79,7 +92,10 @@ if(isset($_SESSION['success_message']))
 								<div class="container" style = "margin-top:10px">
 									<div class="row">
 										<div class ="col-12 text-center">
-											¿No tienes cuenta? <a href="#">Regístrate aquí</a>
+											¿No tienes cuenta? <a href="/LaCuponera/View/newClient.php/">Regístrate aquí</a>
+										</div>
+										<div class ="col-12 text-center">
+											<a href="/LaCuponera/View/recuperarContra.php/">Olvide mi contraseña</a>
 										</div>
 									</div>	
 								</div>											

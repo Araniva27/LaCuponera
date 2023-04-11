@@ -111,6 +111,50 @@ class Correo extends Model
 			}
     }
 
+
+	public function enviarNewContra($nuevaContra,$correo)
+    {
+        //Create an instance; passing `true` enables exceptions
+		$mail = new PHPMailer(true);
+
+		try 
+		{
+			//Server settings
+			//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+			$mail->isSMTP();                                            //Send using SMTP
+			$mail->Host       = 'smtp.gmail.com';    					//Set the SMTP server to send through
+			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+			$mail->Username   = 'correoscotizacionesphp@gmail.com';                     //SMTP username
+			$mail->Password   = 'rwfhqawserqodctq';                               //SMTP password
+			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+			$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+			//Recipients
+			$mail->setFrom('correoscotizacionesphp@gmail.com', 'LA CUPONERA');
+			$mail->addAddress($correo); 
+
+
+			//Attachments
+
+
+			//Content
+			$mail->isHTML(true);                                  //Set email format to HTML
+			$mail->Subject = 'RESTAURACION DE CLAVE - LA CUPONERA';
+            $mail->Body    = '<h3>Nueva contraseña: '. $nuevaContra . '</h3>';
+
+			$mail->send();
+		} 
+		catch (Exception $e) 
+		{
+			echo "<div class='container-fluid' style = 'margin-top: 20px'>
+							<div class='alert alert-danger' role='alert'>
+							Message could not be sent. Mailer Error: {$mail->ErrorInfo}
+							</div>
+						</div>
+					";
+		}
+    }
+
     public function generarToken($dui)
     {
         //alimentamos el generador de aleatorios

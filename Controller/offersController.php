@@ -10,8 +10,6 @@ class OffersController extends Controller{
 
     function __construct()
     {
-        
-
         $this->model = new Offers();
     }
 

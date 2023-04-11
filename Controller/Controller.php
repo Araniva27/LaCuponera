@@ -16,7 +16,5 @@ abstract class Controller{
             echo "No existe esta vista";
         }
     }
-
-   
 }
 ?>
