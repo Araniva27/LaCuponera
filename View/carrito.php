@@ -104,6 +104,7 @@
                                 $total = $total + ($valor["cantidad"] * $valor["precio"]);
                             }
                             echo "<h5>Total: $ $total </h5>";
+
                             echo "
                             <form action='/LaCuponera/car/crearFactura/' method='POST'>
                             <div class='container-fluid' style='margin-top: 20px; margin-bottom: 10p'>
@@ -171,5 +172,4 @@
     require 'footer.php';
     ?>
 </body>
-
 </html>
