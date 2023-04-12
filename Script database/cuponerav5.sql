@@ -292,7 +292,7 @@ INSERT INTO `token` (`idToken`, `token`, `correo`) VALUES
 CREATE TABLE `usuario` (
   `idUsuario` varchar(100) NOT NULL,
   `usuario` varbinary(100) NOT NULL,
-  `contra` text NOT NULL,
+  `contra` varbinary(100) NOT NULL,
   `nivel` varchar(10) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
