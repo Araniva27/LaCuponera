@@ -58,6 +58,15 @@
 				<?php
 				unset($_SESSION['contra_nueva']);
 	}
+	if(isset($_SESSION['contra_cambiada']))
+	{
+				?>
+					<script>
+						alertify.message('<?php echo  $_SESSION['contra_cambiada']?>');
+					</script>
+				<?php
+				unset($_SESSION['contra_cambiada']);
+	}
 ?>
 
 <main>

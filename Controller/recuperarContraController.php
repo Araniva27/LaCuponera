@@ -12,12 +12,14 @@ class recuperarContraController extends Controller
     private $model;
     private $modelUser;
     private $modelCorreo;
+    private $modelSesion;
 
     function __construct()
     {        
         $this->model = new Sesion();
         $this->modelUser = new User();
         $this->modelCorreo = new Correo();
+        $this->modelSesion = new Sesion();
     }
 
 
@@ -83,5 +85,61 @@ class recuperarContraController extends Controller
         $newContra = substr($newContra, -10);
         return $newContra;
     }
+
+    public function cambiarContra()
+    {
+        if(isset($_POST['btnCambiarContra']))
+        {
+            extract($_POST);
+            $errores = array();
+            $password = array();   
+            $password["contraActual"] = $contraActual;
+            $password["contraNueva1"] = $contraNueva1;
+            $password["contraNueva2"] = $contraNueva2;
+        }
+
+            if(empty($contraActual) || empty($contraNueva1) || empty($contraNueva2))
+            {
+                array_push($errores, 'Debe llenar todos los campos');
+            }
+            else if($contraNueva1 != $contraNueva2)
+            {
+                array_push($errores, 'Las contraseñas no coinciden');
+            }
+            else if(!validatePassword($contraNueva1))
+            {
+                array_push($errores, "La contraseña no cumple el formato correcto (De 8 a 16 caracteres, 1 letra mayuscula, al menos un número y al menos un caracter especial)");
+            }
+            else if(count($this->modelUser->getPassword($contraActual,$_SESSION["user"]["usuario"]))  == 0)
+            {
+                array_push($errores, 'Su contraseña actual no es correcta');
+            }
+
+
+            if(count($errores) == 0)
+            {
+                //Actualizar contraseña en base de datos
+                if($this->modelUser->actualizarContra($contraNueva1,$_SESSION["user"]["usuario"]) > 0)
+                {
+                    $this->modelSesion->cerrarSesion();
+                    $_SESSION['contra_cambiada'] = "Su contraseña ha sido cambiada, debe loguearse de nuevo";
+                    
+                    header('location: /LaCuponera/View/login.php');
+                }
+                else
+                {
+                    $_SESSION['error_actualizar_contra'] = "Ha habido un error al intentar cambiar su contraseña"; 
+                    header('location: /LaCuponera/View/recuperarContra.php');
+                }
+            }
+            else
+            {
+                $viewBag['errores'] = $errores;
+                $viewBag['password'] = $password;
+                $this->render("cambiarContra.php", $viewBag);
+            }
+    }
+
+    
 }
 ?>

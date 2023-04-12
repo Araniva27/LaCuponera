@@ -101,7 +101,7 @@ class ClientController extends Controller{
             {
                 array_push($errores, 'Las contraseñas no coinciden');
             }
-
+            
             if(!validatePassword($contra))
             {
                 array_push($errores, "La contraseña no cumple el formato correcto (De 8 a 16 caracteres, 1 letra mayuscula, al menos un número y al menos un caracter especial)");

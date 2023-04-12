@@ -42,4 +42,14 @@ class User extends Model
         $query = "UPDATE usuario SET contra = :contra WHERE usuario = :correo";
         return $this->setQuery($query,$usuario);
     }
+
+    public function getPassword($contra,$correo)
+    {
+        $usuario = array();
+        $usuario['contra'] = $contra;
+        $usuario['usuario'] = $correo;
+
+        $query ="SELECT contra FROM usuario WHERE contra = :contra AND usuario = :usuario";
+        return $this->getQuery($query,$usuario);
+    }
 }

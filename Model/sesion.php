@@ -18,4 +18,9 @@ class Sesion extends Model
             return $this->getQuery($query,['id'=>$idCliente]);
     }
 
+    public function cerrarSesion()
+    {
+        unset($_SESSION['user']);
+        //session_destroy();
+    }
 }

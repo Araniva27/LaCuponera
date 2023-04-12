@@ -34,6 +34,9 @@
                             <a class="nav-link listElement" href="/LaCuponera/sesion/cerrarSesion/">Cerrar sesión</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link listElement" href="/LaCuponera/view/cambiarContra.php">Cambiar contraseña</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link listElement" href="/LaCuponera/user/getDataUser/<?php echo $_SESSION['user']['idUsuario'] ?>">Mi perfil</a>
                         </li>
                         <div class="col align-self-end">
