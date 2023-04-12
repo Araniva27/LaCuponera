@@ -141,7 +141,8 @@
                             <div class="row" style="margin-bottom: 5px;">
                                 <div class='col-lg-12 col-12'>
                                     <label for='tarjeta' class='form-label' style='font-size: 19px'>No. tarjeta</label>
-                                    <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder="0000000000000000">
+                                    <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder="4000 0000 0000 0000">
+                                    <label for='tarjeta' class='form-label' style='font-size: 13px'><b>*Por el momento solo aceptamos tarjetas VISA</b></label>
                                 </div>
                             </div>
                             <div class="row">

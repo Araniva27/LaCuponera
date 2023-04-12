@@ -82,7 +82,7 @@
 
     function validateVisa($value)
     {
-        if(preg_match('/^4[0-9]{12}(?:[0-9]{3})?$/',$value)){
+        if(preg_match('/^4[0-9]{3}\s[0-9]{4}\s[0-9]{4}\s[0-9]{1}(?:[0-9]{3})?$/',$value)){
             return true;
         }else{
             return false;
