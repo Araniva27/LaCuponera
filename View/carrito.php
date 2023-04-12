@@ -104,6 +104,34 @@
                                 $total = $total + ($valor["cantidad"] * $valor["precio"]);
                             }
                             echo "<h5>Total: $ $total </h5>";
+                            echo "
+                            <form action='/LaCuponera/car/crearFactura/' method='POST'>
+                            <div class='container-fluid' style='margin-top: 20px; margin-bottom: 10p'>
+                                <div class='row' style='margin-bottom: 5px;'>
+                                    <div class='col-lg-12 col-12'>
+                                        <label for='tarjeta' class='form-label' style='font-size: 19px'>No. tarjeta</label>
+                                        <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder='4000 0000 0000 0000'>
+                            <label for='tarjeta' class='form-label' style='font-size: 1px'><b>*Por el momento solo aceptamos tarjetas VISA</b></label>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-lg-9 col-12'>
+                                <label for='tarjeta' class='form-label' style='font-size: 19px'>Vencimiento</label>
+                                <input type='text' required class='form-control inputBorder' id='vencimiento' name='vencimiento' placeholder='MM/YYYY'>
+                            </div>
+                            <div class='col-lg-3 col-12'>
+                                <label for='cvv' class='form-label' style='font-size: 19px'>CVV</label>
+                                <input type='text' required class='form-control inputBorder id='cvv' name='cvv' placeholder='0000'>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type='submit' class='btn btn-primary' name='pagar' style='margin-top: 20px;'>Pagar</button>
+                </form>
+                            
+                            
+                            
+                            ";
                         }
                         else 
                         {
@@ -134,32 +162,8 @@
                 }
             
                 ?>
-                <a href="/LaCuponera/car/reiniciar/" class="btn btn-primary">Limpiar</a>
-                <!-formulario de pago->
-                    <form action="/LaCuponera/car/crearFactura/" method="POST">
-                        <div class="container-fluid" style="margin-top: 20px; margin-bottom: 10px">
-                            <div class="row" style="margin-bottom: 5px;">
-                                <div class='col-lg-12 col-12'>
-                                    <label for='tarjeta' class='form-label' style='font-size: 19px'>No. tarjeta</label>
-                                    <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder="4000 0000 0000 0000">
-                                    <label for='tarjeta' class='form-label' style='font-size: 13px'><b>*Por el momento solo aceptamos tarjetas VISA</b></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-9 col-12">
-                                    <label for='tarjeta' class='form-label' style='font-size: 19px'>Vencimiento</label>
-                                    <input type="text" required class="form-control inputBorder" id="vencimiento" name="vencimiento" placeholder="MM/YYYY">
-                                </div>
-                                <div class="col-lg-3 col-12">
-                                    <label for='cvv' class='form-label' style='font-size: 19px'>CVV</label>
-                                    <input type="text" required class="form-control inputBorder" id="cvv" name="cvv" placeholder="0000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" name="pagar">Pagar</button>
-                        <!--<button type="submit" href="/LaCuponera/car/crearFactura/" class="btn btn-primary">Pagar</button>-->
-                    </form>
+                <a href="/LaCuponera/car/reiniciar/" class="btn btn-primary" style="margin-top: 20px;">Limpiar</a>
+                
             </div>
         </div>
     </div>
