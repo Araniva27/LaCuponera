@@ -23,9 +23,7 @@ class SesionController extends Controller
             $errores = array();
             $usuario = array();
             $usuario['usuario'] = $correo;
-            $usuario['contra'] = $contra;            
-        }
-
+            
             if(empty($correo) || !isset($correo))
             {
                 array_push($errores, 'Debe de ingresar un correo');
@@ -42,7 +40,8 @@ class SesionController extends Controller
             if(count($errores) == 0)
             {
                 $infoUsuario = $this->model->getUsuario($usuario);
-                if(count($infoUsuario) > 0)
+                
+                if(count($infoUsuario) > 0 &&  $this->validarContra($contra,$infoUsuario[0]["contra"]) == true)
                 {
                     //validamos que la cuenta este activa
                     if($infoUsuario[0]["usuario"] == $correo && $infoUsuario[0]["estado"] == 1)
@@ -92,6 +91,21 @@ class SesionController extends Controller
                 $viewBag['usuario'] = $usuario;
                 $this->render("validateCode.php", $viewBag);
             }
+        }
+    }
+
+    public function validarContra($contraIngresada,$hash)
+    {
+        //$hash_ingresado = password_hash($contraIngresada, PASSWORD_BCRYPT);
+        //echo  $hash_ingresado . "<br>";
+
+        if (password_verify($contraIngresada, $hash)) 
+        {
+            return true;
+        } else 
+        {
+            return false;
+        }
     }
 
     public function cerrarSesion()

@@ -31,7 +31,6 @@ class recuperarContraController extends Controller
             $errores = array();
             $correoArreglo = array();   
             $correoArreglo["correo"] = $correo;
-        }
 
             if(empty($correo) || !isset($correo))
             {
@@ -76,6 +75,7 @@ class recuperarContraController extends Controller
                 $viewBag['correo'] = $correo;
                 $this->render("recuperarContra.php", $viewBag);
             }
+        }
     }
 
 
@@ -96,7 +96,6 @@ class recuperarContraController extends Controller
             $password["contraActual"] = $contraActual;
             $password["contraNueva1"] = $contraNueva1;
             $password["contraNueva2"] = $contraNueva2;
-        }
 
             if(empty($contraActual) || empty($contraNueva1) || empty($contraNueva2))
             {
@@ -110,7 +109,7 @@ class recuperarContraController extends Controller
             {
                 array_push($errores, "La contraseña no cumple el formato correcto (De 8 a 16 caracteres, 1 letra mayuscula, al menos un número y al menos un caracter especial)");
             }
-            else if(count($this->modelUser->getPassword($contraActual,$_SESSION["user"]["usuario"]))  == 0)
+            else if($this->modelUser->getPassword($contraActual,$_SESSION["user"]["usuario"]) != true)
             {
                 array_push($errores, 'Su contraseña actual no es correcta');
             }
@@ -138,6 +137,7 @@ class recuperarContraController extends Controller
                 $viewBag['password'] = $password;
                 $this->render("cambiarContra.php", $viewBag);
             }
+        }
     }
 
     

@@ -28,8 +28,26 @@ class Client extends Model
 
     public function insertarUsuario($usuario=array())
     {
+        // Generamos un salt aleatorio
+        //$salt = openssl_random_pseudo_bytes(22);
+
+        // Combinamos la contraseña con el salt
+        $contrasena = $usuario["contra"];
+        //$contrasena_con_salt = $salt . $contrasena;
+
+        // Encriptar la contraseña con salt utilizando password_hash
+        $hash = password_hash($contrasena, PASSWORD_BCRYPT);
+
+        //nuevo arreglo
+        $user = array();
+
+        $user["dui"] = $usuario["dui"];
+        $user["usuario"] = $usuario["usuario"];
+        $user["contra"] = $hash;
+
+        
         $query = "INSERT INTO usuario VALUES (:dui, :usuario, :contra,1 ,0)";
-        return $this->setQuery($query,$usuario);
+        return $this->setQuery($query,$user);
     }
 
     public function updateUsuarioInfo($usuario=array())

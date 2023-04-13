@@ -23,7 +23,7 @@
         {
 			?>
 				<script>
-					alertify.success('<?php echo  $_SESSION['producto_agregado_message']?>');
+					alertify.message('<?php echo  $_SESSION['producto_agregado_message']?>');
 				</script>
 			<?php
 			unset($_SESSION['producto_agregado_message']);
@@ -52,7 +52,7 @@
         {
 			?>
 				<script>
-					alertify.success('<?php echo  $_SESSION['compra_exitosa_message']?>');
+					alertify.message('<?php echo  $_SESSION['compra_exitosa_message']?>');
 				</script>
 			<?php
             unset($_SESSION['compra_exitosa_message']);

@@ -128,7 +128,6 @@ class ClientController extends Controller{
                     //Usuario registrado
                     if($this->model->insertarUsuario($usuario) >0)
                     {
-                        //enviar correo
                         $correoobj = new Correo();
                         $correoobj->enviarCorreo($usuario);
                         header('location: /LaCuponera/View/validateCode.php');
@@ -152,8 +151,10 @@ class ClientController extends Controller{
         }
     }
 
-    public function updateClientData(){
-        if(isset($_POST['modificar'])){
+    public function updateClientData()
+    {
+        if(isset($_POST['modificar']))
+        {
             extract($_POST);
             $datos = array();
             $errores = array();
@@ -183,16 +184,21 @@ class ClientController extends Controller{
                 array_push($_SESSION['errores'], 'Verifique el formato del teléfono');
             }
 
-            if(count($_SESSION['errores'])==0){
-                if($this->model->updateUsuarioInfo($datos)){
+            if(count($_SESSION['errores'])==0)
+            {
+                if($this->model->updateUsuarioInfo($datos))
+                {
                     $_SESSION['success_message_updateinfo'] = "Datos actualizados correctamente";
                     header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
 
-                }else{
+                }
+                else
+                {
                     header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
                 }
-            }else{
-                               
+            }
+            else
+            {
                 header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
                     
             }

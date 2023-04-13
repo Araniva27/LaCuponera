@@ -34,22 +34,33 @@ class User extends Model
     }
 
     public function actualizarContra($contra,$correo)
-    {
+    {   
+        $hash = password_hash($contra, PASSWORD_BCRYPT);
+
         $usuario = array();
         $usuario['correo'] = $correo;
-        $usuario['contra'] = $contra;
+        $usuario['contra'] = $hash;
 
         $query = "UPDATE usuario SET contra = :contra WHERE usuario = :correo";
         return $this->setQuery($query,$usuario);
     }
 
-    public function getPassword($contra,$correo)
+    public function getPassword($contraIngresada,$correo)
     {
         $usuario = array();
-        $usuario['contra'] = $contra;
         $usuario['usuario'] = $correo;
 
-        $query ="SELECT contra FROM usuario WHERE contra = :contra AND usuario = :usuario";
-        return $this->getQuery($query,$usuario);
+        $query ="SELECT contra FROM usuario WHERE usuario = :usuario";
+        $contra = $this->getQuery($query,$usuario);
+        
+
+        if (password_verify($contraIngresada, $contra[0]["contra"])) 
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
     }
 }
