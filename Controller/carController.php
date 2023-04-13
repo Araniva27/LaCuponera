@@ -49,48 +49,55 @@ class CarController extends Controller
     public function agregarPromo()
     {
         if (isset($_POST['btnAgregar'])) {
-            extract($_POST);
-            $errores = array();
-            $carrito = new Carrito();
+            if(isset($_SESSION['user']))
+            {
+                extract($_POST);
+                $errores = array();
+                $carrito = new Carrito();
 
-            if ($cantidad > 0) {
-                $existencia = $this->modelOffer->getCantidadOferta($idPromocion);
+                if ($cantidad > 0) {
+                    $existencia = $this->modelOffer->getCantidadOferta($idPromocion);
 
-                if ($existencia[0]['cantidad'] >= $cantidad) {
+                    if ($existencia[0]['cantidad'] >= $cantidad) {
 
-                    if (isset($_SESSION["carrito"][$titulo])) {
-                        if (count($_SESSION["carrito"]) > 0) {
-                            foreach ($_SESSION["carrito"] as $indice => $arreglo) {
-                                $idPromo = $_SESSION["carrito"][$indice]["idPromocion"];
+                        if (isset($_SESSION["carrito"][$titulo])) {
+                            if (count($_SESSION["carrito"]) > 0) {
+                                foreach ($_SESSION["carrito"] as $indice => $arreglo) {
+                                    $idPromo = $_SESSION["carrito"][$indice]["idPromocion"];
 
-                                if ($idPromo == $idPromocion) {
+                                    if ($idPromo == $idPromocion) {
 
-                                    $newCantidad = $_SESSION["carrito"][$indice]["cantidad"] + $cantidad;
+                                        $newCantidad = $_SESSION["carrito"][$indice]["cantidad"] + $cantidad;
 
-                                    if ($existencia[0]['cantidad'] >=  $newCantidad) {
-                                        $carrito->agregarPromo($titulo, $cantidad, $precio, $idPromocion);
-                                        $_SESSION['producto_agregado_message'] = "El producto ha sido agregado correctamente";
-                                        header("Location:/LaCuponera/offers/index/");
-                                    } else {
-                                        $_SESSION['cantidad_error_message'] = "Cantidad ingresada es superior a las existencias";
-                                        header("Location:/LaCuponera/offers/index/");
+                                        if ($existencia[0]['cantidad'] >=  $newCantidad) {
+                                            $carrito->agregarPromo($titulo, $cantidad, $precio, $idPromocion);
+                                            $_SESSION['producto_agregado_message'] = "El producto ha sido agregado correctamente";
+                                            header("Location:/LaCuponera/offers/index/");
+                                        } else {
+                                            $_SESSION['cantidad_error_message'] = "Cantidad ingresada es superior a las existencias";
+                                            header("Location:/LaCuponera/offers/index/");
+                                        }
                                     }
                                 }
                             }
+                        } else {
+                            $carrito->agregarPromo($titulo, $cantidad, $precio, $idPromocion);
+                            $_SESSION['producto_agregado_message'] = "El producto ha sido agregado correctamente";
+                            header("Location:/LaCuponera/offers/index/");
                         }
                     } else {
-                        $carrito->agregarPromo($titulo, $cantidad, $precio, $idPromocion);
-                        $_SESSION['producto_agregado_message'] = "El producto ha sido agregado correctamente";
+                        $_SESSION['cantidad_error_message'] = "Cantidad ingresada es superior a las existencias";
                         header("Location:/LaCuponera/offers/index/");
                     }
                 } else {
-                    $_SESSION['cantidad_error_message'] = "Cantidad ingresada es superior a las existencias";
+                    $_SESSION['error_cantidad_message'] = "La cantidad de promociones debe de ser mayor a cero";
                     header("Location:/LaCuponera/offers/index/");
                 }
-            } else {
-                $_SESSION['error_cantidad_message'] = "La cantidad de promociones debe de ser mayor a cero";
-                header("Location:/LaCuponera/offers/index/");
+            }else{
+                    $_SESSION['error_cantidad_message'] = "Debe de iniciar sesión para agregar al carrito";
+                    header("Location:/LaCuponera/offers/index/");
             }
+                
         }
     }
 
@@ -108,10 +115,10 @@ class CarController extends Controller
                     array_push($errores, "El número de tarjeta no puede ser vacío.");
                 }
 
-                /*if (!validateVisa($numTarjeta)) 
+                if (!validateVisa($numTarjeta)) 
                 {
                     array_push($errores, "La tarjeta debe ser Visa.");
-                } */
+                } 
                 
                 /* if (!validateMastercard($numTarjeta)) {
                     array_push($errores, "La tarjeta debe ser Mastercard.");

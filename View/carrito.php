@@ -111,7 +111,7 @@
                                 <div class='row' style='margin-bottom: 5px;'>
                                     <div class='col-lg-12 col-12'>
                                         <label for='tarjeta' class='form-label' style='font-size: 19px'>No. tarjeta</label>
-                                        <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder='4000 0000 0000 0000'>
+                                        <input type='text' required class='form-control inputBorder' id='numTarjeta' name='numTarjeta' placeholder='4000000000000000000'>
                             <label for='tarjeta' class='form-label' style='font-size: 1px'><b>*Por el momento solo aceptamos tarjetas VISA</b></label>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
 
-                    <button type='submit' class='btn btn-primary' name='pagar' style='margin-top: 20px;'>Pagar</button>
+                    <button type='submit' class='btn btn-primary' name='pagar' style='margin-top: 20px; width:100%'>Pagar</button>
                 </form>
                             
                             
@@ -139,13 +139,15 @@
                             echo "Los productos han sido eliminados del carrito";
                         }
                     }
-                ?>
+                ?>                
+                <a href="/LaCuponera/car/reiniciar/" class="btn btn-primary" style="margin-top: 20px; width:100%">Limpiar</a>
+                
                 <?php
                 if(isset($errores))
                 {
 
                     echo "
-                        <div class='container'>
+                        <div class='container' style='margin-top:10px'>
                             <div class='card'>
                             <h5 class = 'text-center' style = 'margin-top:10px; margin-bottom: 0px'>¡Verificar!</h5>
                                 <div class='card-body'>
@@ -163,8 +165,6 @@
                 }
             
                 ?>
-                <a href="/LaCuponera/car/reiniciar/" class="btn btn-primary" style="margin-top: 20px;">Limpiar</a>
-                
             </div>
         </div>
     </div>
