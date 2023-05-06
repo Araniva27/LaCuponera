@@ -82,10 +82,10 @@ class UserController extends Controller
             }
     }
 
-    public function getDataUser($idUsuario)
+    public function getDataUser($id)
     {
         $viewBag = array();
-        $datos = $this->model->showUserInfo($idUsuario);
+        $datos = $this->model->showUserInfo($id);
         $viewBag['datos'] = $datos;
         $this->render("updateUsersInfo.php", $viewBag);
     }

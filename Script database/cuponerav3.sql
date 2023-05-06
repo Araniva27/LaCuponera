@@ -4,13 +4,13 @@ use cuponera;
 
 create table usuario
 (
-  idUsuario varchar(100) primary key,
+  id varchar(100) primary key,
   usuario varbinary(100) not null unique,
   contra varbinary(100) not null,
   nivel varchar(10) not null,
   estado int not null
 );
-INSERT INTO `usuario` (`idUsuario`, `usuario`, `contra`, `nivel`, `estado`) VALUES
+INSERT INTO `usuario` (`id`, `usuario`, `contra`, `nivel`, `estado`) VALUES
 ("12345678-9",'cornejoerick7@gmail.com', '123', "1", 1);
 
 

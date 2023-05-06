@@ -3,7 +3,7 @@ use cuponera;
 
 create table usuario
 (
-  idUsuario varchar(100) primary key,
+  id varchar(100) primary key,
   usuario varbinary(100) not null unique,
   contra varbinary(100) not null,
   nivel varchar(10) not null,
