@@ -51,14 +51,17 @@ class SesionController extends Controller
                         {
                             $_SESSION["user"]["usuario"]=$infoUsuario[0]['usuario'];
                             //aqui estoy guardando el id del usuario
-                            $_SESSION["user"]["idUsuario"] = $infoUsuario[0]['idUsuario'];
+                            //$_SESSION["user"]["id"] = $infoUsuario[0]['id'];
+                            $_SESSION["user"]["id"] = $infoUsuario[0]['id'];
 
                             $sesion = new Sesion();
-                            $idCliente = $sesion->getIdCliente($_SESSION["user"]["idUsuario"]);
+                            //$idCliente = $sesion->getIdCliente($_SESSION["user"]["id"]);
+                            $idCliente = $sesion->getIdCliente($_SESSION["user"]["id"]);
                             $_SESSION["cliente"]["idCliente"] = $idCliente[0]["idCliente"];
 
 
-                            $_SESSION['id'] = $_SESSION["user"]["idUsuario"];
+                            //$_SESSION['id'] = $_SESSION["user"]["id"];
+                            $_SESSION['id'] = $_SESSION["user"]["id"];
                             $_SESSION['nombreU'] = $_SESSION["user"]["usuario"];
                             $_SESSION["user"]["nivel"]=$infoUsuario[0]['nivel']; 
                             $_SESSION['success_message'] = "¡Bienvenido " . $_SESSION["user"]["usuario"] . "!";

@@ -192,7 +192,7 @@ CREATE TABLE `token` (
 --
 
 CREATE TABLE `usuario` (
-  `idUsuario` varchar(100) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `usuario` varbinary(100) NOT NULL,
   `contra` varbinary(100) NOT NULL,
   `nivel` varchar(10) NOT NULL
@@ -274,7 +274,7 @@ ALTER TABLE `token`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

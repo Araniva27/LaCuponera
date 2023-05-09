@@ -290,7 +290,7 @@ INSERT INTO `token` (`idToken`, `token`, `correo`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `idUsuario` varchar(100) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `usuario` varbinary(100) NOT NULL,
   `contra` varbinary(100) NOT NULL,
   `nivel` varchar(10) NOT NULL,
@@ -301,7 +301,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `usuario`, `contra`, `nivel`, `estado`) VALUES
+INSERT INTO `usuario` (`id`, `usuario`, `contra`, `nivel`, `estado`) VALUES
 ('01805710-8', 0x6d656c69736172616d6972657a5f323540686f746d61696c2e636f6d, '123', '1', 1),
 ('02785296-9', 0x6d616e75656c6172616e697661303740676d61696c2e636f6d, 'Manuel123$', '1', 1),
 ('06174301-9', 0x666162696f6c616d617274696e657a31393032303140676d61696c2e636f6d, 'Fabi190201$', '1', 1),
@@ -387,7 +387,7 @@ ALTER TABLE `token`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario` (`usuario`);
 
 --

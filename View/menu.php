@@ -6,7 +6,7 @@
     }
     ?>
     <?php
-    if (isset($_SESSION['user']['idUsuario'])) {
+    if (isset($_SESSION['user']['id'])) {
 
 
     ?>
@@ -37,7 +37,7 @@
                             <a class="nav-link listElement" href="/LaCuponera/view/cambiarContra.php">Cambiar contraseña</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link listElement" href="/LaCuponera/user/getDataUser/<?php echo $_SESSION['user']['idUsuario'] ?>">Mi perfil</a>
+                            <a class="nav-link listElement" href="/LaCuponera/user/getDataUser/<?php echo $_SESSION['user']['id'] ?>">Mi perfil</a>
                         </li>
                         <div class="col align-self-end">
                             <li class="nav-item">

@@ -146,7 +146,8 @@ class CarController extends Controller
                     {
                         $totalProductos = count($_SESSION["carrito"]);
                         $factura = array();
-                        $idCliente = $this->model->getIdCliente($_SESSION["user"]["idUsuario"]);
+                        //$idCliente = $this->model->getIdCliente($_SESSION["user"]["id"]);
+                        $idCliente = $this->model->getIdCliente($_SESSION["user"]["id"]);
                         $factura['idCliente'] =   $idCliente[0]['idCliente'];
                         $factura['total'] = $this->model->calcularTotal();
 
@@ -205,7 +206,7 @@ class CarController extends Controller
 
 
     public function insertarDetalle()
-    {
+    {        
         if (isset($_SESSION["carrito"])) {
             if (count($_SESSION["carrito"]) > 0) {
                 foreach ($_SESSION["carrito"] as $indice => $arreglo) {

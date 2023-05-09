@@ -162,7 +162,7 @@ class ClientController extends Controller{
             $datos['apellidos'] = $apellidos;
             $datos['direccion'] = $direccion;
             $datos['tel'] = $telefono;            
-            $datos['dui'] = $_SESSION['user']['idUsuario'];
+            $datos['dui'] = $_SESSION['user']['id'];
 
             $_SESSION['errores'] = array();
 
@@ -189,17 +189,17 @@ class ClientController extends Controller{
                 if($this->model->updateUsuarioInfo($datos))
                 {
                     $_SESSION['success_message_updateinfo'] = "Datos actualizados correctamente";
-                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['id']."");
 
                 }
                 else
                 {
-                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+                    header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['id']."");
                 }
             }
             else
             {
-                header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['idUsuario']."");
+                header("location:/LaCuponera/user/getDataUser/".$_SESSION['user']['id']."");
                     
             }
         }

@@ -80,7 +80,8 @@ require_once 'model.php';
 
         public function getIdCliente($idCliente)
         {
-            $query ="SELECT idCliente FROM usuario inner join cliente on usuario.idUsuario = cliente.dui where usuario.estado = 1 and usuario.idUsuario = :id";
+            //$query ="SELECT idCliente FROM usuario inner join cliente on usuario.id = cliente.dui where usuario.estado = 1 and usuario.id = :id";
+            $query ="SELECT idCliente FROM usuario inner join cliente on usuario.id = cliente.dui where usuario.estado = 1 and usuario.id = :id";
             return $this->getQuery($query,['id'=>$idCliente]);
         }
 
