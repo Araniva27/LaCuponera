@@ -22,13 +22,13 @@ class Correo extends Model
 			$mail->isSMTP();                                            //Send using SMTP
 			$mail->Host       = 'smtp.gmail.com';    					//Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-			$mail->Username   = 'correoscotizacionesphp@gmail.com';                     //SMTP username
-			$mail->Password   = 'rwfhqawserqodctq';                               //SMTP password
+			$mail->Username   = 'lacuponera2023@gmail.com';                     //SMTP username
+			$mail->Password   = 'dcbqecfjtivtqrbo';                               //SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 			$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 			//Recipients
-			$mail->setFrom('correoscotizacionesphp@gmail.com', 'LA CUPONERA');
+			$mail->setFrom('lacuponera2023@gmail.com', 'LA CUPONERA');
 			$mail->addAddress($usuario['usuario']); 
 
 
@@ -78,13 +78,13 @@ class Correo extends Model
 			$mail->isSMTP();                                            //Send using SMTP
 			$mail->Host       = 'smtp.gmail.com';    					//Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-			$mail->Username   = 'correoscotizacionesphp@gmail.com';                     //SMTP username
-			$mail->Password   = 'rwfhqawserqodctq';                               //SMTP password
+			$mail->Username   = 'lacuponera2023@gmail.com';                     //SMTP username
+			$mail->Password   = 'dcbqecfjtivtqrbo';                               //SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 			$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 			//Recipients
-			$mail->setFrom('correoscotizacionesphp@gmail.com', 'LA CUPONERA');
+			$mail->setFrom('lacuponera2023@gmail.com', 'LA CUPONERA');
 			$mail->addAddress($_SESSION["user"]["usuario"]); 
 
 
@@ -124,13 +124,13 @@ class Correo extends Model
 			$mail->isSMTP();                                            //Send using SMTP
 			$mail->Host       = 'smtp.gmail.com';    					//Set the SMTP server to send through
 			$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-			$mail->Username   = 'correoscotizacionesphp@gmail.com';                     //SMTP username
-			$mail->Password   = 'rwfhqawserqodctq';                               //SMTP password
+			$mail->Username   = 'lacuponera2023@gmail.com';                     //SMTP username
+			$mail->Password   = 'dcbqecfjtivtqrbo';                               //SMTP password
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 			$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 			//Recipients
-			$mail->setFrom('correoscotizacionesphp@gmail.com', 'LA CUPONERA');
+			$mail->setFrom('lacuponera2023@gmail.com', 'LA CUPONERA');
 			$mail->addAddress($correo); 
 
 
