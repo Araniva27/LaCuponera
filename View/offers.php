@@ -96,7 +96,7 @@
                                             <div class='card-body'>                            
                                                 <div class='row'>
                                                     <div class='col-4'>
-                                                        <img src='/LaCuponera/View/assets/img/".$oferta['Imagen']."' class='card-img-top' alt='...' width='200px' height='200px'>
+                                                        <img src='data:image/png;base64,". base64_encode($oferta['Imagen']) ."' class='card-img-top' alt='...' width='200px' height='200px'>
                                                     </div>
                                                     <div class='col-8'>
                                                         <h3 class='card-title'>".$oferta['Empresa']."</h3>
